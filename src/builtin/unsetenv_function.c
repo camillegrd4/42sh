@@ -34,7 +34,8 @@ char **remove_line(shell_t *shell, int i, int y)
 int find_line_unset(shell_t *shell, int i, int j, int y)
 {
     int x = 0;
-    char *save = malloc(sizeof(char) * (my_strlen_egale(shell->save_env[y]) + 1));
+    char *save = malloc(sizeof(char) *
+    (my_strlen_egale(shell->save_env[y]) + 1));
 
     if (!shell || !save) {
         return 84;
