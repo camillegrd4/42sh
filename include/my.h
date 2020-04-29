@@ -75,7 +75,7 @@ int my_strlen(char const *str);
 char *my_strcat(char *dest, char const *src);
 int my_strncmp(char const *s1, char const *s2, int n);
 int my_strcmp(char const *s1, char const *s2);
-char **my_str_to_world_array_colon(char *str);
+char **my_str_to_world_array_pipe(char *str);
 char *my_strdup(char const *src);
 int number_char(char *str, int i);
 int lines(char *str);

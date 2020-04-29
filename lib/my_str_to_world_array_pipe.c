@@ -83,7 +83,7 @@ char **check_space_colon(char **array, int number, char **form)
     return form;
 }
 
-char **my_str_to_world_array_colon(char *str)
+char **my_str_to_world_array_pipe(char *str)
 {
     int number = 0;
     char **array = NULL;

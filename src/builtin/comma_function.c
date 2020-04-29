@@ -50,13 +50,13 @@ int call_exec_comma_function(char *line, shell_t *shell, char **envp)
     while (value != 2) {
         if (value == 0) {
             shell->cmd = shell->comma->first_arg;
-            shell->array = my_str_to_world_array_colon(shell->cmd);
+            shell->array = my_str_to_world_array_pipe(shell->cmd);
             value = 1;
             if (my_function(shell, envp) == 84)
                 return 84;
         } else if (value == 1) {
             shell->cmd = shell->comma->second_arg;
-            shell->array = my_str_to_world_array_colon(shell->cmd);
+            shell->array = my_str_to_world_array_pipe(shell->cmd);
             value = 2;
             if (my_function(shell, envp) == 84)
                 return 84;

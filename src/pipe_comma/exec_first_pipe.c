@@ -11,7 +11,7 @@ static int exec_father(pid_t pid, shell_t *shell, char **envp, int fd[2])
 {
     int y = 0;
     shell->array =
-            my_str_to_world_array_colon(shell->comma->second_arg_pipe);
+            my_str_to_world_array_pipe(shell->comma->second_arg_pipe);
     if (shell->comma->second_arg_pipe[y] == '\n') {
         my_putstr("Invalid null command.\n");
         return 1;
@@ -28,7 +28,7 @@ static int exec_father(pid_t pid, shell_t *shell, char **envp, int fd[2])
 
 static int exec_child(shell_t *shell, pid_t pid, char **envp, int *fd)
 {
-    shell->array = my_str_to_world_array_colon(shell->comma->first_arg_pipe);
+    shell->array = my_str_to_world_array_pipe(shell->comma->first_arg_pipe);
     close(fd[0]);
     dup2(fd[1], 1);
     if (call_function_recode(envp, shell) == 1)

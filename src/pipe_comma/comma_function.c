@@ -66,7 +66,7 @@ int call_exec_comma_function(char *line, shell_t *shell, char **envp)
         while (shell->path_bis[i][y] == ' ' || shell->path_bis[i][y] == ';')
             y++;
         if (shell->path_bis[i][y] != ';' && shell->path_bis[i][y] != ' ') {
-            shell->array = my_str_to_world_array_colon(shell->path_bis[i]);
+            shell->array = my_str_to_world_array_pipe(shell->path_bis[i]);
             value = 1;
             if (check_path_comma(a, shell, envp) == 84) return 84;
         }
