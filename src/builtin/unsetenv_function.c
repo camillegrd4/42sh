@@ -56,7 +56,8 @@ int find_line_unset(shell_t *shell, int i, int j, int y)
 int check_arg_unset(shell_t *shell)
 {
     if (!shell->array[1]) {
-        my_putstr("unsetenv: Too few arguments.\n");
+        my_putstr("unsetenv: Too few arguments.");
+        my_putchar('\n');
         return 1;
     }
     return 0;

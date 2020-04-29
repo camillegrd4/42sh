@@ -33,7 +33,6 @@ int check_getline(shell_t *shell, char **envp, int x, char *line)
     }
     if (!shell->cmd) {
         my_putstr("exit\n");
-        free(shell);
         exit(0);
     } else if (x != -1) {
         if (my_function(shell, envp) == 84) {
