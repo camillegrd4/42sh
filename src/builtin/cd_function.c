@@ -29,31 +29,42 @@ int exec_cd(shell_t *shell, char *path)
     return 0;
 }
 
-int cd_normal(shell_t *shell, char *path)
+int cd_normal(shell_t *shell, char *path, int value, char *save)
 {
-    static int value = 0;
-
-    if (value == 0 && my_strncmp(path, "-", 2) == 0) {
-        my_putstr(": No such file or directory.\n");
+    if (my_strncmp(path, "-", 2) == 0) {
+        if (value > 0) {
+            if (exec_cd(shell, save) == 1)
+                return 1;
+        } else if (value == 0) {
+            my_putstr(": No such file or directory.\n");
+            return 1;
+        }
+    }
+    else if (exec_cd(shell, path) == 1)
         return 1;
-    } else if (value == 1 && my_strncmp(path, "-", 2) == 0)
-        path = "..";
-    if (exec_cd(shell, path) == 1)
-        return 1;
-    value = 1;
     return 0;
 }
 
 int cd_function(shell_t *shell)
 {
+    static int value = 0;
+    size_t size = 0;
+    static char *save = NULL;
+    char *buf = NULL;
+    static char *save_path = NULL;
+
+    save_path = getcwd(buf, size);
     if (!shell || !shell->array[0])
         return 84;
     if (my_strncmp(shell->array[1], "-", 1) == 0) {
-        if (cd_normal(shell, "-") == 1)
+        if (cd_normal(shell, "-", value, save) == 1)
             return 1;
     } else {
-        if (cd_normal(shell, shell->array[1]) == 1)
+        if (cd_normal(shell, shell->array[1], value, save) == 1)
             return 1;
     }
+    value += 1;
+    free(save);
+    save = my_strdup(save_path);
     return 0;
 }
