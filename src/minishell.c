@@ -17,8 +17,8 @@ int my_function(shell_t *shell, char **envp)
     if (call_function_recode(envp, shell) == 1) {
         return 1;
     }
-    else if (exec_function(envp, shell, pid) == 84) {
-        return 84;
+    else if (exec_function(envp, shell, pid) == 1) {
+        return 1;
     }
     return 0;
 }
@@ -58,6 +58,7 @@ int principal_function(char **envp, shell_t *shell)
     char *line = NULL;
     int x = 0;
     int i = 0;
+
     while (1) {
         i = 0;
         if (isatty(STDIN_FILENO) == 1)
