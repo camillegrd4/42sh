@@ -29,10 +29,12 @@ int exec_function(char **envp, shell_t *shell, pid_t pid);
 int find_path(shell_t *shell, char **envp);
 shell_t *init_struct_minishell(char **envp);
 int execve_function(char **envp, shell_t *shell);
-char **remove_line(shell_t *shell, int i, int y);
 int access_function(int i, char **envp, char *path, shell_t *shell);
 int exec_binary(shell_t *shell, char **envp);
 int exec_function_system(shell_t *shell, char **envp, int i);
+
+
+/*comma_pipe*/
 char *check_path(char *path);
 int check_error_father(int wstatus);
 int check_getline(shell_t *shell, char **envp, int x, char *line);
@@ -64,6 +66,7 @@ int count_line(char **envp, shell_t *shell);
 char **add_line(char **envp, shell_t *shell);
 int change_save_env(char **envp, shell_t *shell);
 int find_line(char **envp, shell_t *shell, int j, int y);
+char **remove_line(shell_t *shell, int i, int y);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
