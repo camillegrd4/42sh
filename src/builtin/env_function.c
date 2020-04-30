@@ -7,10 +7,12 @@
 
 #include "my.h"
 
-int find_line(shell_t *shell, int i, int j, int y)
+int find_line(char **envp, shell_t *shell, int j, int y)
 {
+    int i = 0;
+
     while (shell->name[j] != '\0') {
-        if (shell->save_env[y][i] != shell->name[j]) {
+        if (envp[y][i] != shell->name[j]) {
             return 1;
         }
         j++;
