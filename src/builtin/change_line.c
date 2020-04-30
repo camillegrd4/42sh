@@ -7,20 +7,20 @@
 
 #include "my.h"
 
-int change_env_next(shell_t *shell, int line)
+int change_env_next(shell_t *shell, int line, char **envp)
 {
     int i = 0;
     int j = 0;
     int y = 0;
 
     shell->name = my_strdup(shell->array[1]);
-    while (shell->save_env[y] != NULL) {
-        if (shell->save_env[y][i] == shell->name[j]) {
-            if (find_line(shell, i, j, y) == 1)
+    while (envp[y] != NULL) {
+        if (envp[y][i] == shell->name[j]) {
+            if (find_line(envp, shell, j, y) == 1)
                 y++;
             else {
                 shell->line = 1;
-                shell->save_env[y] = change_line(shell, i, y);
+                shell->save_env[y] = change_line(shell, envp, i, y);
                 break;
             }
         } else
@@ -70,14 +70,14 @@ int change_env(char **envp, shell_t *shell)
     if (check_arg(shell->array[1], shell) == 1)
         return 1;
     shell->line = 0;
-    change_env_next(shell, line);
+    change_env_next(shell, line, envp);
     if (shell->line == 0) {
         shell->save_env = add_line(envp, shell);
     }
     return 0;
 }
 
-char *change_line(shell_t *shell, int i, int y)
+char *change_line(shell_t *shell, char **envp, int i, int y)
 {
     int j = 0;
     int x = 0;
@@ -85,8 +85,8 @@ char *change_line(shell_t *shell, int i, int y)
     shell->remove = my_strdup(shell->array[2]);
     new = malloc(sizeof(char) * (my_strlen(shell->remove)
         + my_strlen(shell->array[1]) + 2));
-    while (shell->save_env[y][i] != '=') {
-        new[x] = shell->save_env[y][i];
+    while (envp[y][i] != '=') {
+        new[x] = envp[y][i];
         i++;
         x++;
     }
