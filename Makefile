@@ -34,10 +34,14 @@ LIB =				lib/my_putchar.c 					\
 					lib/my_strdup.c						\
 					lib/my_strcat_two.c 				\
 					lib/my_str_to_world_array_comma.c 	\
+					lib/my_str_to_wordtab.c 			\
+					lib/clean_string.c 					\
+					lib/tab_len.c 						\
 
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\
 				src/init_struct.c 				\
+				src/do_double_and.c 			\
 				$(BUILTIN)						\
 				$(PIPE_COMMA)					\
 				$(EXECVE_FUNCTION)				\

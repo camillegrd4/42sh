@@ -67,12 +67,11 @@ int principal_function(char **envp, shell_t *shell)
             my_putstr("exit\n");
             exit(0);
         }
-        if (x != -1) {
-            x = check_pipe_function(envp, line, shell, i);
-            x = check_error_main(x, line, shell, envp);
-            if (x == 1 || x == 84)
-                return x;
-        }
+        x = do_double_and(envp, line, shell);
+        x = check_pipe_function(envp, line, shell, i);
+        x = check_error_main(x, line, shell, envp);
+        if (x == 1 || x == 84)
+            return x;
     }
     return 0;
 }
