@@ -95,6 +95,10 @@ int my_strlen_pipe(char const *str);
 char **my_str_to_world_array_comma(char *str);
 char **check_space_comma(char **array, int number, char **form);
 char **add_letter_comma(char **array, int number, char *str, int i);
+char **str_to_wordtab(char const *, char const *);
+int do_double_and(char **envp, char *line, shell_t *shell);
+int tab_len(char **);
+char **clean_string(char **);
 
 /*criterion*/
 void redirect_all_stdout(void);
