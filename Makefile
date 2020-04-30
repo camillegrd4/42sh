@@ -49,7 +49,7 @@ LDFLAGS =	-L./lib
 
 OBJ	=	$(SRCS:.c=.o)
 
-NAME	=	mysh
+NAME	=	42sh
 
 all:	$(NAME)
 
