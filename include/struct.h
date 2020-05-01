@@ -20,6 +20,8 @@ typedef struct shell {
     int line;
     char *unset;
     int pos;
+    char *echo_path;
+    int value;
     struct comma_s *comma;
 }shell_t;
 
@@ -29,10 +31,5 @@ typedef struct comma_s {
     char *first_arg_pipe;
     char *second_arg_pipe;
 }comma_t;
-
-typedef struct {
-    char buf;
-    int (*fct)(shell_t *shell);
-}caca_t;
 
 #endif /* !STRUCT_H */

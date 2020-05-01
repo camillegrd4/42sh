@@ -68,8 +68,20 @@ int change_save_env(char **envp, shell_t *shell);
 int find_line(char **envp, shell_t *shell, int j, int y);
 char **remove_line(shell_t *shell, int i, int y);
 int echo_builtin(shell_t *shell);
-int flags_e(shell_t *shell);
+int flags_e(char *str);
 int flags_n(shell_t *shell);
+char *recover_arg(char **arg);
+int print_arg(shell_t *shell);
+int calc_len_arg(char **arg);
+int my_pattern(shell_t *shell, char path);
+int check_cot(char *str, int i);
+int print_n_flags(shell_t *shell, int j);
+int my_main_flags(char str);
+int backslash_b(shell_t *shell);
+int backslash_n(shell_t *shell);
+int print_n_flags_normal(shell_t *shell, int j);
+int flags_e(char *str);
+int my_flags(char str);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
@@ -106,5 +118,5 @@ char **clean_string(char **);
 /*criterion*/
 void redirect_all_stdout(void);
 
-typedef int (stock);
+typedef int (*flags)(shell_t *shell);
 #endif /* !MY_H */
