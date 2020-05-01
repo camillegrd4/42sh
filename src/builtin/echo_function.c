@@ -12,6 +12,8 @@ int my_pattern(shell_t *shell, char path)
     flags flag_checker[] = {
     ['b'] = backslash_b,
     ['n'] = backslash_n,
+    ['c'] = backslash_c,
+    ['m'] = backslash_m,
     };
     flag_checker[path](shell);
     return 0;
@@ -20,7 +22,7 @@ int my_pattern(shell_t *shell, char path)
 int my_main_flags(char str)
 {
     int i = 0;
-    char *flags = "bn";
+    char *flags = "bncm";
 
     while (flags[i] != '\0') {
         if (str == flags[i])

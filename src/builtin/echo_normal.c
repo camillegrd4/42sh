@@ -60,7 +60,7 @@ char *recover_arg(char **arg)
     int j = 0;
     int x = 0;
     int value = 0;
-    char *str = malloc(sizeof(char) * (calc_len_arg(arg) + 2));
+    char *str = malloc(sizeof(char) * (calc_len_arg(arg) + 3));
     while (arg[i]) {
         j = 0;
         if (value != 0) {

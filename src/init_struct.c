@@ -26,6 +26,7 @@ shell_t *init_struct_minishell(char **envp)
     shell->line = 0;
     shell->unset = NULL;
     shell->pos = 0;
+    shell->echo_path = NULL;
     shell->comma = malloc(sizeof(comma_t));
     return shell;
 }
