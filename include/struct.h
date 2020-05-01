@@ -30,4 +30,9 @@ typedef struct comma_s {
     char *second_arg_pipe;
 }comma_t;
 
+typedef struct {
+    char buf;
+    int (*fct)(shell_t *shell);
+}caca_t;
+
 #endif /* !STRUCT_H */

@@ -13,6 +13,8 @@ BUILTIN =			src/builtin/call_function_recode.c 	\
 					src/builtin/env_function.c 			\
 					src/builtin/recode_function.c 		\
 					src/builtin/setenv_function.c 		\
+					src/builtin/echo_function.c 		\
+					src/builtin/flags_echo.c 			\
 
 PIPE_COMMA =		src/pipe_comma/comma_function.c 	 \
 					src/pipe_comma/comma_or_pipe.c 		 \

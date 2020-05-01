@@ -67,6 +67,9 @@ char **add_line(char **envp, shell_t *shell);
 int change_save_env(char **envp, shell_t *shell);
 int find_line(char **envp, shell_t *shell, int j, int y);
 char **remove_line(shell_t *shell, int i, int y);
+int echo_builtin(shell_t *shell);
+int flags_e(shell_t *shell);
+int flags_n(shell_t *shell);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
@@ -103,4 +106,5 @@ char **clean_string(char **);
 /*criterion*/
 void redirect_all_stdout(void);
 
+typedef int (stock);
 #endif /* !MY_H */
