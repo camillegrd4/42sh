@@ -45,14 +45,17 @@ LIB =				lib/my_putchar.c 					\
 					lib/clean_string.c 					\
 					lib/tab_len.c 						\
 
+SEPARATOR = 		src/separator/do_double_and.c 		\
+					src/separator/do_double_or.c 		\
+
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\
 				src/init_struct.c 				\
-				src/do_double_and.c 			\
 				$(BUILTIN)						\
 				$(PIPE_COMMA)					\
 				$(EXECVE_FUNCTION)				\
 				$(LIB)							\
+				$(SEPARATOR) 					\
 
 CFLAGS	=	-I ./include -g
 

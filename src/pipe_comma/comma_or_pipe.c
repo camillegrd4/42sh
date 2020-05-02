@@ -52,6 +52,8 @@ int check_pipe_function(char **envp, char *line, shell_t *shell, int i)
 {
     if (!envp || !line || !shell)
         return 84;
+    if (is_double_or(line) == 1)
+        return 0;
     while (line[i] != '\0') {
         if (line[i] == '|') {
             fill_first_arg_pipe(shell, line);

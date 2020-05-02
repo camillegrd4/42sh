@@ -11,6 +11,7 @@ int command_not_found(char **envp, shell_t *shell)
 {
     if (!shell || !envp)
         return 84;
+    shell->error = 1;
     my_putstr_without_return(shell->array[0]);
     my_putstr(": Command not found.");
     my_putchar('\n');
@@ -24,6 +25,7 @@ int access_function(int i, char **envp, char *path, shell_t *shell)
         return 84;
     if (access(path, F_OK) == 0) {
         if (execve(path, shell->array, envp) == -1) {
+            shell->error = 1;
             if (errno == 8) {
                 path = check_path(path);
                 my_putstr(path);
@@ -55,8 +57,7 @@ int execve_function(char **envp, shell_t *shell)
         if (access(shell->array[0], F_OK) == 0) {
             access_function(i, envp, shell->array[0], shell);
         } else {
-            if (exec_function_system(shell, envp, i) == 84)
-                return 84;
+            exec_function_system(shell, envp, i);
         }
         i++;
     }

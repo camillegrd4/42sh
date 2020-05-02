@@ -57,11 +57,15 @@ int cd_function(shell_t *shell)
     if (!shell || !shell->array[0])
         return 84;
     if (my_strncmp(shell->array[1], "-", 1) == 0) {
-        if (cd_normal(shell, "-", value, save) == 1)
+        if (cd_normal(shell, "-", value, save) == 1) {
+            shell->error = 1;
             return 1;
+        }
     } else {
-        if (cd_normal(shell, shell->array[1], value, save) == 1)
+        if (cd_normal(shell, shell->array[1], value, save) == 1) {
+            shell->error = 1;
             return 1;
+        }
     }
     value += 1;
     free(save);
