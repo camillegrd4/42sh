@@ -76,7 +76,7 @@ int check_cot_e(char *str, int i)
 {
     int value = (my_strlen(str));;
 
-    while (str[i] != 'e')
+    while (str[i] != 'e' && str[i] != 'E')
         i++;
     i++;
     if (str[i] == ' ')
