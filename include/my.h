@@ -85,6 +85,8 @@ int my_flags(char str);
 int backslash_c(shell_t *shell);
 int backslash_m(shell_t *shell);
 char *remove_caract(char *str);
+int backslash_r(shell_t *shell);
+char *remove_all_before(char *str);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);

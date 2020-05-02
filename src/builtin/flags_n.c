@@ -10,9 +10,14 @@
 int print_n_flags_normal(shell_t *shell, int j)
 {
     while (shell->echo_path[j] != '\0') {
-        if (shell->echo_path[j] == '"' || shell->echo_path[j] == '\\' ||
-        (shell->echo_path[j] == ' ' && shell->echo_path[j + 1] == '\0')) {
+        if (shell->echo_path[j] == '"' || (shell->echo_path[j] == '\\' &&
+        shell->echo_path[j + 1] != 't') || (shell->echo_path[j] == ' '
+        && shell->echo_path[j + 1] == '\0')) {
             j++;
+        }
+        if (shell->echo_path[j] == '\\' && shell->echo_path[j + 1] == 't') {
+            my_putchar('\t');
+            j += 2;
         }
         my_putchar(shell->echo_path[j]);
         j++;
