@@ -20,7 +20,9 @@ int unsetenv_function(shell_t *shell)
 {
     if (!shell)
         return 84;
-    if (my_unsetenv(shell) == 1)
+    if (my_unsetenv(shell) == 1) {
+        shell->error = 1;
         return 1;
+    }
     return 0;
 }

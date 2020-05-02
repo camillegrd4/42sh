@@ -15,7 +15,6 @@ int my_function(shell_t *shell, char **envp)
         return 84;
     }
     if (call_function_recode(envp, shell) == 1) {
-        shell->error = 1;
         return 1;
     }
     else if (exec_function(envp, shell, pid) == 84) {

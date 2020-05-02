@@ -32,7 +32,6 @@ int do_double_or(char **envp, char *line, shell_t *shell, int x)
     value = 0;
     while (separ[i]) {
         if (shell->error == 0 && value == 1) {
-            printf("pq\n");
             return 2;
         } else {
             if (check_getline(shell, envp, 0, separ[i]) == 84)

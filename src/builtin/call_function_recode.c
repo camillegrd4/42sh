@@ -22,8 +22,10 @@ int call_function_recode_next(char **envp, shell_t *shell)
         return 1;
     }
     if (my_strncmp(shell->array[0], "echo", 4) == 0) {
-        echo_builtin(shell);
-        return 1;
+        if (echo_builtin(shell) == 1) {
+            shell->error = 1;
+            return 1;
+        }
     }
     return 0;
 }
