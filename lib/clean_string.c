@@ -12,13 +12,13 @@ char **clean_string(char **tab)
     int index = 0;
     int j = 0;
     int third = 0;
-    char **new = malloc(sizeof(char *) * tab_len(tab) + 1);
+    char **new = malloc(sizeof(char *) * (tab_len(tab) + 2));
 
     if (!tab || ! new) return NULL;
     while (tab[index]) {
         j = 0;
         third = 0;
-        new[index] = malloc(sizeof(char) * my_strlen(tab[index]) + 1);
+        new[index] = malloc(sizeof(char) * (my_strlen(tab[index]) + 2));
         if (!new[index]) return NULL;
         while (tab[index][j]) {
             if ((j == 0 || j == my_strlen(tab[index]) - 1) &&

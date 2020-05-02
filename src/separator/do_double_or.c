@@ -25,7 +25,8 @@ int do_double_or(char **envp, char *line, shell_t *shell, int x)
     int i = 0;
     static int value = 0;
 
-    if (x == 2 || is_double_or(line) == 0)
+    if (x == 2) return 2;
+    if (is_double_or(line) == 0)
         return 0;
     separ = str_to_wordtab(line, "|");
     separ = clean_string(separ);

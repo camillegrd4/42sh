@@ -19,16 +19,27 @@ int is_double_and(char *line)
     return 0;
 }
 
+int check_and(char **separ, int i)
+{
+    if (separ[1] && separ[1][0] == '\n') {
+        my_putstr("Invalid null command.\n");
+        return 2;
+    }
+    return i;
+}
+
 int do_double_and(char **envp, char *line, shell_t *shell, int x)
 {
     char **separ = NULL;
     int i = 0;
 
-    if (x == 2 || is_double_and(line) == 0) {
+    if (x == 2) return 2;
+    if (is_double_and(line) == 0)
         return 0;
-    }
     separ = str_to_wordtab(line, "&");
     separ = clean_string(separ);
+    if (check_and(separ, i) == 2)
+        return 2;
     while (separ[i]) {
         if (shell->error == 1) {
             return 2;
