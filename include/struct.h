@@ -22,6 +22,7 @@ typedef struct shell {
     int pos;
     char *echo_path;
     int value;
+    int without;
     struct comma_s *comma;
 }shell_t;
 

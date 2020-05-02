@@ -13,8 +13,9 @@ int my_pattern(shell_t *shell, char path)
     ['b'] = backslash_b,
     ['n'] = backslash_n,
     ['c'] = backslash_c,
-    ['m'] = backslash_m,
+    ['e'] = backslash_e,
     ['r'] = backslash_r,
+    ['t'] = backslash_t,
     };
     flag_checker[path](shell);
     return 0;
@@ -23,7 +24,7 @@ int my_pattern(shell_t *shell, char path)
 int my_main_flags(char str)
 {
     int i = 0;
-    char *flags = "bncmr";
+    char *flags = "bncert";
 
     while (flags[i] != '\0') {
         if (str == flags[i])
@@ -43,6 +44,10 @@ int echo_builtin(shell_t *shell)
         while (shell->echo_path[i] != '\0') {
             if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'n') {
                 flags_n(shell);
+                return 2;
+            }
+            if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'e') {
+                flags_e(shell);
                 return 2;
             }
             i++;

@@ -19,6 +19,7 @@ BUILTIN =			src/builtin/call_function_recode.c 	\
 					src/builtin/flags_n.c 				\
 					src/builtin/flags_e.c 				\
 					src/builtin/backslash.c 			\
+					src/builtin/backslash_t.c 			\
 
 PIPE_COMMA =		src/pipe_comma/comma_function.c 	 \
 					src/pipe_comma/comma_or_pipe.c 		 \

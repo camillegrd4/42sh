@@ -30,6 +30,8 @@ int backslash_c(shell_t *shell)
 {
     shell->echo_path = stop_caract(shell);
     shell->value = 1;
+    shell->without = 1;
+    return 0;
 }
 
 int backslash_n(shell_t *shell)

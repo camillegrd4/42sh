@@ -72,13 +72,16 @@ int flags_n(shell_t *shell)
 {
     int i = 2;
     int j = 0;
+    int x = 0;
 
-    while (shell->echo_path[j] != ' ')
+    while (shell->echo_path[j] != 'n')
         j++;
     j++;
-    if (check_cot(shell->echo_path, j) == 1) {
+    if (shell->echo_path[j] == ' ')
+        j++;
+    if ((x = check_cot(shell->echo_path, j)) == 2) {
         print_n_flags(shell, j);
-    } else {
+    } else if (x != 2 && x != 1) {
         print_n_flags_normal(shell, j);
     }
 

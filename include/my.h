@@ -68,7 +68,6 @@ int change_save_env(char **envp, shell_t *shell);
 int find_line(char **envp, shell_t *shell, int j, int y);
 char **remove_line(shell_t *shell, int i, int y);
 int echo_builtin(shell_t *shell);
-int flags_e(char *str);
 int flags_n(shell_t *shell);
 char *recover_arg(char **arg);
 int print_arg(shell_t *shell);
@@ -80,13 +79,14 @@ int my_main_flags(char str);
 int backslash_b(shell_t *shell);
 int backslash_n(shell_t *shell);
 int print_n_flags_normal(shell_t *shell, int j);
-int flags_e(char *str);
+int print_e_flags_without_changes(shell_t *shell);
 int my_flags(char str);
 int backslash_c(shell_t *shell);
-int backslash_m(shell_t *shell);
+int backslash_e(shell_t *shell);
+int backslash_t(shell_t *shell);
 char *remove_caract(char *str);
 int backslash_r(shell_t *shell);
-char *remove_all_before(char *str);
+int flags_e(shell_t *shell);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);

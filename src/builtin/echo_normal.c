@@ -12,6 +12,10 @@ int check_cot(char *str, int i)
     int value = (my_strlen(str));
 
     if (str[i] == '"' && str[value - 1] == '"') {
+        return 2;
+    } else if ((str[i] == '"' && str[value - 1] != '"')
+    || (str[i] != '"' && str[value - 1] == '"')) {
+        my_putstr("Unmatched '\"'.\n");
         return 1;
     }
     return 0;

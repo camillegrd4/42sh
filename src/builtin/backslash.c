@@ -45,7 +45,7 @@ char *remove_caract(char *str)
     int j = 0;
 
     while (str[i] != '\0') {
-        if (str[i] == '\\' && str[i + 1] == 'm') {
+        if (str[i] == '\\' && str[i + 1] == 'e') {
             i += 3;
         }
         new[j] = str[i];
@@ -56,7 +56,7 @@ char *remove_caract(char *str)
     return new;
 }
 
-int backslash_m(shell_t *shell)
+int backslash_e(shell_t *shell)
 {
     shell->echo_path = remove_caract(shell->echo_path);
     shell->value = 1;
