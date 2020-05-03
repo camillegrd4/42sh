@@ -7,6 +7,18 @@
 
 #include "my.h"
 
+int is_double_pipe(char *line)
+{
+    int i = 0;
+
+    while (line[i]) {
+        if (line[i] == '|' && line[i + 1] == '|' && line[i + 2] != '|')
+            return 1;
+        i++;
+    }
+    return 0;
+}
+
 char *fill_first_arg_pipe(shell_t *shell, char *line)
 {
     int i = 0;
@@ -52,7 +64,7 @@ int check_pipe_function(char **envp, char *line, shell_t *shell, int i)
 {
     if (!envp || !line || !shell)
         return 84;
-    if (is_double_or(line) == 1)
+    if (is_double_pipe(line) != 0)
         return 0;
     while (line[i] != '\0') {
         if (line[i] == '|') {

@@ -12,6 +12,10 @@ int is_double_and(char *line)
     int i = 0;
 
     while (line[i]) {
+        if (line[i] == '&' && line[i + 1] == '&' && line[i + 2] == '&') {
+            my_putstr("Invalid null command.\n");
+            return 2;
+        }
         if (line[i] == '&' && line[i + 1] == '&')
             return 1;
         i++;
@@ -37,8 +41,9 @@ int do_double_and(char **envp, char *line, shell_t *shell, int x)
     int i = 0;
 
     if (x == 2) return 2;
-    if (is_double_and(line) == 0)
-        return 0;
+    if ((x = is_double_and(line)) == 0) return 0;
+    else if (x == 2)
+        return 2;
     separ = str_to_wordtab(line, "&");
     separ = clean_string(separ);
     if ((i = check_and(separ, i)) == 2)
