@@ -25,6 +25,9 @@ int check_and(char **separ, int i)
         my_putstr("Invalid null command.\n");
         return 2;
     }
+    if (separ[0][0] == '\0' || separ[0][0] == '\n') {
+        return 1;
+    }
     return i;
 }
 
@@ -38,8 +41,9 @@ int do_double_and(char **envp, char *line, shell_t *shell, int x)
         return 0;
     separ = str_to_wordtab(line, "&");
     separ = clean_string(separ);
-    if (check_and(separ, i) == 2)
+    if ((i = check_and(separ, i)) == 2)
         return 2;
+    shell->error = 0;
     while (separ[i]) {
         if (shell->error == 1) {
             return 2;

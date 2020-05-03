@@ -19,7 +19,7 @@ int is_separator(char lettre, char const *separator)
     return 1;
 }
 
-int    get_tab_size(char const *str, char const *separator)
+int get_tab_size(char const *str, char const *separator)
 {
     int size = 1;
     int i = 0;
@@ -33,7 +33,7 @@ int    get_tab_size(char const *str, char const *separator)
     return (size);
 }
 
-int    get_word_size(char const *str, char const *separator)
+int get_word_size(char const *str, char const *separator)
 {
     int i = 0;
 
