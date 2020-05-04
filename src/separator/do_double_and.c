@@ -35,6 +35,19 @@ int check_and(char **separ, int i)
     return i;
 }
 
+int check_time(char **envp, char *line, shell_t *shell, int x)
+{
+    int static value = 0;
+
+    if (value == 0) {
+        do_double_and(envp, line, shell, x);
+        value = 1;
+        return 0;
+    }
+    value = 0;
+    return 0;
+}
+
 int do_double_and(char **envp, char *line, shell_t *shell, int x)
 {
     char **separ = NULL;
@@ -42,8 +55,7 @@ int do_double_and(char **envp, char *line, shell_t *shell, int x)
 
     if (x == 2) return 2;
     if ((x = is_double_and(line)) == 0) return 0;
-    else if (x == 2)
-        return 2;
+    else if (x == 2) return 2;
     separ = str_to_wordtab(line, "&");
     separ = clean_string(separ);
     if ((i = check_and(separ, i)) == 2)

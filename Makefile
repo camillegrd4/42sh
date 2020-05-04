@@ -47,6 +47,7 @@ LIB =				lib/my_putchar.c 					\
 
 SEPARATOR = 		src/separator/do_double_and.c 		\
 					src/separator/do_double_or.c 		\
+					src/separator/my_separator.c 		\
 
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\

@@ -24,6 +24,7 @@ typedef struct shell {
     int value;
     int without;
     int error;
+    int command_done;
     struct comma_s *comma;
 }shell_t;
 
