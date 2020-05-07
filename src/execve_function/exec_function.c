@@ -12,7 +12,7 @@ int command_not_found(char **envp, shell_t *shell)
     shell->error++;
     my_putstr_without_return(shell->array[0]);
     my_putstr(": Command not found.\n");
-    //exit(0);
+    exit(0);
 }
 
 int access_function(int i, char **envp, char *path, shell_t *shell)
