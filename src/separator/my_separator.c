@@ -14,8 +14,6 @@ char path)
         [';'] = call_exec_comma_function,
         ['|'] = is_or,
         //['\n'] = return_function,
-        //["||"] = do_double_or,
-        //["&&"] = do_double_and,
         ['&'] = check_time,
     };
     flag_checker[path](envp, line, shell, x);
