@@ -57,7 +57,6 @@ int execve_function(char **envp, shell_t *shell)
         }
         i++;
     }
-    printf("oui\n");
     command_not_found(envp, shell);
     return 0;
 }
