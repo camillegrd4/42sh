@@ -17,8 +17,8 @@ int my_function(shell_t *shell, char **envp)
     if (call_function_recode(envp, shell) == 1) {
         return 1;
     }
-    else if (exec_function(envp, shell, pid) == 1) {
-        return 1;
+    else if (exec_function(envp, shell, pid) == 84) {
+        return 84;
     }
     return 0;
 }
@@ -42,12 +42,12 @@ int check_getline(shell_t *shell, char **envp, int x, char *line)
     return 0;
 }
 
-int check_error_main(int x, char *line, shell_t *shell, char **envp)
+int check_error_main(char **envp, char *line, shell_t *shell, int x)
 {
     if (x == 1 || x == 84)
         return x;
     else if (x != 2) {
-        check_comma_function(line, shell, envp, x);
+        check_getline(shell, envp, x, line);
     }
     return 0;
 }
@@ -61,6 +61,7 @@ int principal_function(char **envp, shell_t *shell)
 
     while (1) {
         i = 0;
+        shell->command_done = 0;
         if (isatty(STDIN_FILENO) == 1)
             my_putstr("$ > ");
         if (x = getline(&line, &n, stdin) == -1) {
@@ -68,11 +69,15 @@ int principal_function(char **envp, shell_t *shell)
             my_putstr("exit\n");
             exit(0);
         }
-        x = do_double_and(envp, line, shell);
-        x = check_pipe_function(envp, line, shell, i);
-        x = check_error_main(x, line, shell, envp);
-        if (x == 1 || x == 84)
-            return x;
+        while (line[i] != '\0') {
+            if (my_separator_flags(line[i], shell) == 1) {
+                my_pattern_separator(envp, line, shell, x, line[i]);
+            }
+            i++;
+        }
+        if (shell->command_done != 1) {
+            check_getline(shell, envp, x, line);
+        }
     }
     return 0;
 }

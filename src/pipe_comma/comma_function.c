@@ -50,14 +50,14 @@ int check_path_comma(int a, shell_t *shell, char **envp)
     return 0;
 }
 
-int call_exec_comma_function(char *line, shell_t *shell, char **envp)
+int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x)
 {
     int i = 0;
     int y = 0;
-    int x = 0;
     int a = 0;
     int value = 0;
 
+    x = 0;
     if (check_line(line, shell, i) == 0)
         return 0;
     while (shell->path_bis[i]) {

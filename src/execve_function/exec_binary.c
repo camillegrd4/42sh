@@ -11,6 +11,7 @@ int exec_binary(shell_t *shell, char **envp)
 {
     errno = 0;
     if (execve(shell->array[0], shell->array, envp) == -1) {
+        shell->error = 1;
         if (errno == 8) {
             shell->array[0] = check_path(shell->array[0]);
             my_putstr(shell->array[0]);

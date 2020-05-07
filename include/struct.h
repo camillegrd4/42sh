@@ -20,6 +20,11 @@ typedef struct shell {
     int line;
     char *unset;
     int pos;
+    char *echo_path;
+    int value;
+    int without;
+    int error;
+    int command_done;
     struct comma_s *comma;
 }shell_t;
 

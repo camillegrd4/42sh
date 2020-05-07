@@ -19,7 +19,7 @@ int is_double_and(char *line)
     return 0;
 }
 
-int do_double_and(char **envp, char *line, shell_t *shell)
+int do_double_and(char **envp, char *line, shell_t *shell, int x)
 {
     char **separ = NULL;
     int i = 0;

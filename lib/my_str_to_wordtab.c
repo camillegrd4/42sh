@@ -19,7 +19,7 @@ int is_separator(char lettre, char const *separator)
     return 1;
 }
 
-int    get_tab_size(char const *str, char const *separator)
+int get_tab_size(char const *str, char const *separator)
 {
     int size = 1;
     int i = 0;
@@ -33,7 +33,7 @@ int    get_tab_size(char const *str, char const *separator)
     return (size);
 }
 
-int    get_word_size(char const *str, char const *separator)
+int get_word_size(char const *str, char const *separator)
 {
     int i = 0;
 
@@ -42,7 +42,7 @@ int    get_word_size(char const *str, char const *separator)
     return (i);
 }
 
-char    **str_to_wordtab(char const *str, char const *separator)
+char **str_to_wordtab(char const *str, char const *separator)
 {
     char **dest = NULL;
     int i = 0;
@@ -55,7 +55,7 @@ char    **str_to_wordtab(char const *str, char const *separator)
         while (is_separator(str[i], separator) == 0 && str[i])
             i++;
         size = get_word_size(&str[i], separator);
-        if (!(dest[j] = malloc(sizeof(char) * size))) return (NULL);
+        if (!(dest[j] = malloc(sizeof(char) * (size ) + 1))) return (NULL);
         while (k < size)
             dest[j][k++] = str[i++];
         dest[j][k] = '\0';

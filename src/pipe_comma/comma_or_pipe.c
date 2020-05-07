@@ -7,6 +7,18 @@
 
 #include "my.h"
 
+int is_double_pipe(char *line)
+{
+    int i = 0;
+
+    while (line[i]) {
+        if (line[i] == '|' && line[i + 1] == '|' && line[i + 2] != '|')
+            return 1;
+        i++;
+    }
+    return 0;
+}
+
 char *fill_first_arg_pipe(shell_t *shell, char *line)
 {
     int i = 0;
@@ -48,30 +60,27 @@ char *fill_second_arg_pipe(shell_t *shell, int i, char *line)
     return 0;
 }
 
-int check_pipe_function(char **envp, char *line, shell_t *shell, int i)
+int check_pipe_function(char **envp, char *line, shell_t *shell, int x)
 {
+    int i = 0;
+
     if (!envp || !line || !shell)
         return 84;
+    if (is_double_pipe(line) != 0)
+        return 0;
     while (line[i] != '\0') {
         if (line[i] == '|') {
             fill_first_arg_pipe(shell, line);
             fill_second_arg_pipe(shell, i, line);
             exec_first_arg(envp, line, shell, i);
-            return 2;
+            return 0;
         }
         i++;
     }
     return 0;
 }
 
-int check_comma_function(char *line, shell_t *shell, char **envp, int x)
+int return_function(char **envp, char *line, shell_t *shell, int x)
 {
-    if (!line || !shell || !envp)
-        return 84;
-    if (call_exec_comma_function(line, shell, envp) != 1
-    && (my_strncmp(line, "\n", 1) != 0)) {
-        if (check_getline(shell, envp, x, line) == 84)
-            return 84;
-    }
     return 0;
 }

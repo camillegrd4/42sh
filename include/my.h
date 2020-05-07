@@ -38,15 +38,16 @@ int exec_function_system(shell_t *shell, char **envp, int i);
 char *check_path(char *path);
 int check_error_father(int wstatus);
 int check_getline(shell_t *shell, char **envp, int x, char *line);
-int call_exec_comma_function(char *line, shell_t *shell, char **envp);
+int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x);
 int check_line(char *line, shell_t *shell, int i);
 int exec_cd(shell_t *shell, char *path);
 int check_pipe(char **envp, char *line, shell_t *shell, int i);
 char *fill_second_arg(shell_t *shell, int i, char *line);
 char *fill_first_arg(shell_t *shell, char *line);
 int check_function(char **envp, shell_t *shell, char *line, int i);
-int check_comma_function(char *line, shell_t *shell, char **envp, int x);
+int check_comma_function(char **envp, char *line, shell_t *shell, int x);
 int check_pipe_function(char **envp, char *line, shell_t *shell, int i);
+int check_error_main(char **envp, char *line, shell_t *shell, int x);
 int exec_first_arg(char **envp, char *line, shell_t *shell, int i);
 
 /*builtin*/
@@ -67,6 +68,26 @@ char **add_line(char **envp, shell_t *shell);
 int change_save_env(char **envp, shell_t *shell);
 int find_line(char **envp, shell_t *shell, int j, int y);
 char **remove_line(shell_t *shell, int i, int y);
+int echo_builtin(shell_t *shell);
+int flags_n(shell_t *shell);
+char *recover_arg(char **arg);
+int print_arg(shell_t *shell);
+int calc_len_arg(char **arg);
+int my_pattern(shell_t *shell, char path);
+int check_cot(char *str, int i);
+int print_n_flags(shell_t *shell, int j);
+int my_main_flags(char str);
+int backslash_b(shell_t *shell);
+int backslash_n(shell_t *shell);
+int print_n_flags_normal(shell_t *shell, int j);
+int print_e_flags_without_changes(shell_t *shell);
+int my_flags(char str);
+int backslash_c(shell_t *shell);
+int backslash_e(shell_t *shell);
+int backslash_t(shell_t *shell);
+char *remove_caract(char *str);
+int backslash_r(shell_t *shell);
+int flags_e(shell_t *shell);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
@@ -96,11 +117,23 @@ char **my_str_to_world_array_comma(char *str);
 char **check_space_comma(char **array, int number, char **form);
 char **add_letter_comma(char **array, int number, char *str, int i);
 char **str_to_wordtab(char const *, char const *);
-int do_double_and(char **envp, char *line, shell_t *shell);
 int tab_len(char **);
 char **clean_string(char **);
+
+/*separator*/
+int do_double_and(char **envp, char *line, shell_t *shell, int x);
+int do_double_or(char **envp, char *line, shell_t *shell, int x);
+int is_double_or(char *line);
+int my_separator_flags(char line, shell_t *shell);
+int return_function(char **envp, char *line, shell_t *shell, int x);
+int my_pattern_separator(char **envp, char *line, shell_t *shell,
+char x, char path);
+int is_or(char **envp, char *line, shell_t *shell, int x);
+int check_time(char **envp, char *line, shell_t *shell, int x);
 
 /*criterion*/
 void redirect_all_stdout(void);
 
+typedef int (*flags)(shell_t *shell);
+typedef int (*flags_separator)(char **envp, char *line, shell_t *shell, int x);
 #endif /* !MY_H */

@@ -49,8 +49,10 @@ int setenv_function(char **envp, shell_t *shell)
     if (!shell)
         return 84;
     x = check_setenv(envp, shell);
-    if (x == 1)
+    if (x == 1) {
+        shell->error = 1;
         return 1;
+    }
     if (x == 2)
         return 0;
     change_env(envp, shell);

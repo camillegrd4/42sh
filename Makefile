@@ -13,6 +13,13 @@ BUILTIN =			src/builtin/call_function_recode.c 	\
 					src/builtin/env_function.c 			\
 					src/builtin/recode_function.c 		\
 					src/builtin/setenv_function.c 		\
+					src/builtin/echo_function.c 		\
+					src/builtin/backslash_echo.c 		\
+					src/builtin/echo_normal.c 			\
+					src/builtin/flags_n.c 				\
+					src/builtin/flags_e.c 				\
+					src/builtin/backslash.c 			\
+					src/builtin/backslash_t.c 			\
 
 PIPE_COMMA =		src/pipe_comma/comma_function.c 	 \
 					src/pipe_comma/comma_or_pipe.c 		 \
@@ -38,14 +45,18 @@ LIB =				lib/my_putchar.c 					\
 					lib/clean_string.c 					\
 					lib/tab_len.c 						\
 
+SEPARATOR = 		src/separator/do_double_and.c 		\
+					src/separator/do_double_or.c 		\
+					src/separator/my_separator.c 		\
+
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\
 				src/init_struct.c 				\
-				src/do_double_and.c 			\
 				$(BUILTIN)						\
 				$(PIPE_COMMA)					\
 				$(EXECVE_FUNCTION)				\
 				$(LIB)							\
+				$(SEPARATOR) 					\
 
 CFLAGS	=	-I ./include -g
 
