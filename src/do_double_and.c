@@ -32,7 +32,6 @@ int do_double_and(char **envp, char *line, shell_t *shell, int x)
     while (separ[i]) {
         if ((test = check_getline(shell, envp, 0, separ[i])) != 0)
             return 2;
-        printf("test >>>> %d\n", test);
         i++;
     }
     return 0;
