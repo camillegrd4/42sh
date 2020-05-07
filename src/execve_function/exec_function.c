@@ -9,13 +9,10 @@
 
 int command_not_found(char **envp, shell_t *shell)
 {
-    if (!shell || !envp)
-        return 84;
-    shell->error = 1;
+    shell->error++;
     my_putstr_without_return(shell->array[0]);
-    my_putstr(": Command not found.");
-    my_putchar('\n');
-    exit(0);
+    my_putstr(": Command not found.\n");
+    //exit(0);
 }
 
 int access_function(int i, char **envp, char *path, shell_t *shell)
@@ -50,9 +47,8 @@ int execve_function(char **envp, shell_t *shell)
 
     if (!envp || !shell)
         return 84;
-    exec_binary(shell, envp);
-    if (find_path(shell, envp) == 84)
-        command_not_found(envp, shell);
+    if (exec_binary(shell, envp) == 84 || find_path(shell, envp) == 84)
+        return 84;
     while (shell->path_bis[i] != NULL) {
         if (access(shell->array[0], F_OK) == 0) {
             access_function(i, envp, shell->array[0], shell);
@@ -61,6 +57,7 @@ int execve_function(char **envp, shell_t *shell)
         }
         i++;
     }
+    printf("oui\n");
     command_not_found(envp, shell);
     return 0;
 }
