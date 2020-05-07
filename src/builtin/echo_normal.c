@@ -28,16 +28,14 @@ int print_arg(shell_t *shell)
 
     while (shell->array[i]) {
         while (shell->array[i][j] != '\0') {
-            if (shell->array[i][j] == '"' || shell->array[i][j] == '\\')
-                j++;
-            my_putchar(shell->array[i][j]);
+            if (shell->array[i][j] == '"' || shell->array[i][j] == '\\') {
+                my_putchar(shell->array[i][j]);
+            }
             j++;
         }
-        my_putchar(' ');
         i++;
         j = 0;
     }
-    my_putchar('\n');
     return 0;
 }
 
