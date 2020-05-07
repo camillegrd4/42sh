@@ -35,8 +35,8 @@ int check_getline(shell_t *shell, char **envp, int x, char *line)
         my_putstr("exit\n");
         exit(0);
     } else if (x != -1) {
-        if (my_function(shell, envp) == 84) {
-            return 84;
+        if (my_function(shell, envp) == 1) {
+            return 1;
         }
     }
     return 0;
