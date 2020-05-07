@@ -23,14 +23,16 @@ int do_double_and(char **envp, char *line, shell_t *shell)
 {
     char **separ = NULL;
     int i = 0;
+    int test = 0;
 
     if (is_double_and(line) == 0)
         return 0;
     separ = str_to_wordtab(line, "&");
     separ = clean_string(separ);
     while (separ[i]) {
-        if (check_getline(shell, envp, 0, separ[i]) != 0)
-            return 0;
+        if ((test = check_getline(shell, envp, 0, separ[i])) != 0)
+            return 2;
+        printf("test >>>> %d\n", test);
         i++;
     }
     return 0;
