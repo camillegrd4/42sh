@@ -51,6 +51,7 @@ int check_error_main(char **envp, char *line, shell_t *shell, int x);
 int exec_first_arg(char **envp, char *line, shell_t *shell, int i);
 
 /*builtin*/
+int setting_env(char **env, shell_t *shell);
 int cd_function(shell_t *shell);
 int exit_function(shell_t *shell);
 int unsetenv_function(shell_t *shell);
@@ -94,6 +95,7 @@ char **add_letter_colon(char **array, int number, char *str, int i);
 char **check_space_colon(char **array, int number, char **form);
 int my_strlen_comma(char const *str);
 int my_putchar(char c);
+int my_str_isalpha_num(char const *str);
 int my_putstr(char const *str);
 char **my_str_to_world_array(char *str);
 int my_strlen(char const *str);

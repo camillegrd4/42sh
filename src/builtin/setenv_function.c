@@ -55,6 +55,6 @@ int setenv_function(char **envp, shell_t *shell)
     }
     if (x == 2)
         return 0;
-    change_env(envp, shell);
+    setting_env(envp, shell);
     return 0;
 }
