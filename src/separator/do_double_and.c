@@ -62,13 +62,11 @@ int do_double_and(char **envp, char *line, shell_t *shell, int x)
     if ((i = check_and(separ, i)) == 2)
         return 2;
     while (separ[i]) {
-        printf("%i\n", shell->error);
         if (shell->error > 0) {
             return 2;
         }
         if (check_getline(shell, envp, 0, separ[i]) == 84)
             return 84;
-        printf("---->%i\n", shell->error);
         i++;
     }
     return 2;

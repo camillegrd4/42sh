@@ -13,7 +13,6 @@ char path)
     flags_separator flag_checker[] = {
         [';'] = call_exec_comma_function,
         ['|'] = is_or,
-        //['\n'] = return_function,
         ['&'] = check_time,
     };
     flag_checker[path](envp, line, shell, x);

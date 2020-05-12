@@ -79,8 +79,3 @@ int check_pipe_function(char **envp, char *line, shell_t *shell, int x)
     }
     return 0;
 }
-
-int return_function(char **envp, char *line, shell_t *shell, int x)
-{
-    return 0;
-}
