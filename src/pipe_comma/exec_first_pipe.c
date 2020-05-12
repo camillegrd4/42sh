@@ -18,7 +18,7 @@ static int exec_father(pid_t pid, shell_t *shell, char **envp, int fd[2])
     }
     close(fd[1]);
     dup2(fd[0], 0);
-    if (call_function_recode(envp, shell) == 1)
+    if (call_builtin(envp, shell) == 1)
         return 1;
     if (exec_function(envp, shell, pid) == 84)
         return 84;
@@ -31,7 +31,7 @@ static int exec_child(shell_t *shell, pid_t pid, char **envp, int *fd)
     shell->array = my_str_to_world_array_pipe(shell->comma->first_arg_pipe);
     close(fd[0]);
     dup2(fd[1], 1);
-    if (call_function_recode(envp, shell) == 1)
+    if (call_builtin(envp, shell) == 1)
         return 1;
     if (exec_function(envp, shell, pid) == 84)
         return 84;

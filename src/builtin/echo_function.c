@@ -34,7 +34,7 @@ int my_main_flags(char str)
     return 0;
 }
 
-int echo_builtin(shell_t *shell)
+int echo_builtin(char **envp, shell_t *shell)
 {
     int i = 0;
     char letter;
@@ -50,10 +50,6 @@ int echo_builtin(shell_t *shell)
                 flags_e(shell);
                 return 2;
             }
-            /*if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'E') {
-                flags_e(shell);
-                return 2;
-            }*/
             i++;
         }
     }

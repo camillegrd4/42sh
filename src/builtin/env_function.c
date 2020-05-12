@@ -49,7 +49,7 @@ char **create_list_env(char **envp, shell_t *shell)
     shell->save_env[i] = NULL;
 }
 
-int print_env(char **str, shell_t *shell)
+int print_env(char **envp, shell_t *shell)
 {
     int i = 0;
 

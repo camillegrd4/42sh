@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-int exit_function(shell_t *shell)
+int exit_function(char **argv, shell_t *shell)
 {
     if (!shell)
         return 84;
@@ -16,7 +16,7 @@ int exit_function(shell_t *shell)
     return 0;
 }
 
-int unsetenv_function(shell_t *shell)
+int unsetenv_function(char **envp, shell_t *shell)
 {
     if (!shell)
         return 84;

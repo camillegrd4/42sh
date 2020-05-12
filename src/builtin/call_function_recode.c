@@ -7,42 +7,41 @@
 
 #include "my.h"
 
-int call_function_recode_next(char **envp, shell_t *shell)
+const recode_t tab[] = {
+    { "echo", &echo_builtin },
+    { "setenv", &setenv_function },
+    { "env", &print_env},
+    { "cd", &cd_function},
+    { "exit", &exit_function},
+    {"unsetenv", &unsetenv_function},
+    {"NULL"},
+};
+
+builtin_t find(char *key, shell_t *shell)
 {
-    if (my_strncmp(shell->array[0], "setenv", 6) == 0) {
-        if (setenv_function(envp, shell) == 1)
-            return 1;
-    }
-    if (my_strncmp(shell->array[0], "unsetenv", 8) == 0) {
-        if (unsetenv_function(shell) == 1)
-            return 1;
-    }
-    if (my_strncmp(shell->array[0], "env", 3) == 0) {
-        print_env(shell->save_env, shell);
-        return 1;
-    }
-    if (my_strncmp(shell->array[0], "echo", 4) == 0) {
-        if (echo_builtin(shell) == 1) {
-            shell->error = 1;
-            return 1;
+    int i = 0;
+
+    while (&tab[i] != NULL) {
+        if (my_strcmp(tab[i].key, key) == 0) {
+            return (tab[i].builtin);
         }
+        if (tab[i].key == "NULL")
+            return 0;
+        i++;
     }
-    return 0;
+    return NULL;
 }
 
-int call_function_recode(char **envp, shell_t *shell)
+int call_builtin(char **envp, shell_t *shell)
 {
-    if (!shell || !envp)
-        return 84;
-    if (my_strncmp(shell->array[0], "cd", 2) == 0) {
-        if (cd_function(shell) == 1)
+    builtin_t builtin = find(shell->array[0], shell);
+
+    if (!(builtin))
+        return 0;
+    else {
+        if (builtin(envp, shell) == 1)
             return 1;
+        return 2;
     }
-    if (my_strncmp(shell->array[0], "exit", 4) == 0) {
-        if (exit_function(shell) == 1)
-            return 1;
-    }
-    if (call_function_recode_next(envp, shell) == 1)
-        return 1;
     return 0;
 }

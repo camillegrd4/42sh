@@ -69,7 +69,7 @@ int cd_home(shell_t *shell)
     return 0;
 }
 
-int cd_function(shell_t *shell)
+int cd_function(char **envp, shell_t *shell)
 {
     static int value = 0;
     size_t size = 0;

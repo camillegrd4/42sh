@@ -52,24 +52,23 @@ int exec_first_arg(char **envp, char *line, shell_t *shell, int i);
 
 /*builtin*/
 int setting_env(char **env, shell_t *shell);
-int cd_function(shell_t *shell);
-int exit_function(shell_t *shell);
-int unsetenv_function(shell_t *shell);
+int cd_function(char **envp, shell_t *shell);
+int exit_function(char **argv, shell_t *shell);
+int unsetenv_function(char **envp, shell_t *shell);
 int my_unsetenv(shell_t *shell);
 int change_env_next(shell_t *shell, int line, char **envp);
 char *change_line(shell_t *shell, char **envp, int i, int y);
-int call_function_recode(char **envp, shell_t *shell);
-int call_function_recode_next(char **envp, shell_t *shell);
+int call_builtin(char **envp, shell_t *shell);
 int setenv_function(char **envp, shell_t *shell);
 char **create_list_env(char **envp, shell_t *shell);
-int print_env(char **str, shell_t *shell);
+int print_env(char **envp, shell_t *shell);
 int change_env(char **envp, shell_t *shell);
 int count_line(char **envp, shell_t *shell);
 char **add_line(char **envp, shell_t *shell);
 int change_save_env(char **envp, shell_t *shell);
 int find_line(char **envp, shell_t *shell, int j, int y);
 char **remove_line(shell_t *shell, int i, int y);
-int echo_builtin(shell_t *shell);
+int echo_builtin(char **envp, shell_t *shell);
 int flags_n(shell_t *shell);
 char *recover_arg(char **arg);
 int print_arg(shell_t *shell);
@@ -108,7 +107,6 @@ int number_char(char *str, int i);
 int lines(char *str);
 int number_char_colon(char *str, int i);
 int lines_colon(char *str);
-int cd_function(shell_t *shell);
 int my_strncmp_next(char const *s1, char const *s2, int n);
 char *my_strcat_two(char *dest, char const *src);
 int my_putstr_without_return(char const *str);
@@ -121,6 +119,7 @@ char **add_letter_comma(char **array, int number, char *str, int i);
 char **str_to_wordtab(char const *, char const *);
 int tab_len(char **);
 char **clean_string(char **);
+int my_strcmp(char const *s1, char const *s2);
 
 /*separator*/
 int do_double_and(char **envp, char *line, shell_t *shell, int x);
