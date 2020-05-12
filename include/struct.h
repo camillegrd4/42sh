@@ -35,6 +35,12 @@ typedef struct comma_s {
     char *second_arg_pipe;
 }comma_t;
 
+typedef struct cmd_s {
+    char *separator;
+    char *cmd;
+    struct cmd_s *next;
+}cmd_t;
+
 typedef int (*builtin_t)(char **envp, shell_t *shell);
 
 typedef struct recode {
