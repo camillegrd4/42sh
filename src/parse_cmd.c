@@ -69,6 +69,6 @@ cmd_t *parse_cmd(char *line)
             separator = which_sep(line[i], line[i + 1], line[i - 1]);
         i++;
     }
-    my_rev_list(&new_cmd);
+    my_rev_list(&new_cmd); 
     return new_cmd;
 }
