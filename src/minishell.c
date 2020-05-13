@@ -57,11 +57,12 @@ int principal_function(char **envp, shell_t *shell)
 {
     size_t n = 0;
     char *line = NULL;
-    int x = 0;
+    static int x = 0;
     int i = 0;
 
     while (1) {
         i = 0;
+        x = 0;
         shell->command_done = 0;
         if (isatty(STDIN_FILENO) == 1)
             my_putstr("$ > ");
@@ -70,13 +71,12 @@ int principal_function(char **envp, shell_t *shell)
             my_putstr("exit\n");
             exit(0);
         }
-        while (line[i] != '\0') {
-            if (my_separator_flags(line[i], shell) == 1) {
-                my_pattern_separator(envp, line, shell, x, line[i]);
-            }
+        /*while (line[i] != '\0') {
+            if ((x = call_separator(envp, shell, line, x)) == 1)
+                return 1;
             i++;
-        }
-        if (shell->command_done != 1) {
+        }*/
+        if (x == 0) {
             check_getline(shell, envp, x, line);
         }
     }

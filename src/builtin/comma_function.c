@@ -40,7 +40,7 @@ char *fill_second_arg(shell_t *shell, int i, char *line)
     return 0;
 }
 
-int call_exec_comma_function(char *line, shell_t *shell, char **envp)
+int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x)
 {
     int i = 0;
     int value = 0;

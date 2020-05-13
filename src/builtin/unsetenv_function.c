@@ -69,8 +69,9 @@ int my_unsetenv(shell_t *shell)
     int i = 0;
     int j = 0;
     int number = 1;
+
     if (check_arg_unset(shell) == 1) return 1;
-    while (shell->array[number]) {
+    while (shell->array[number] != NULL) {
         shell->unset = my_strdup(shell->array[number]);
         while (shell->save_env[y] != NULL) {
             if (shell->save_env[y][i] == shell->unset[j]) {
@@ -80,10 +81,12 @@ int my_unsetenv(shell_t *shell)
                 } else
                     y++;
             } else
-                y++;}
+                y++;
+        }
         number++;
         i = 0;
         y = 0;
-        j = 0;}
+        j = 0;
+    }
     return 0;
 }

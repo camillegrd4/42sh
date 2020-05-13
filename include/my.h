@@ -38,7 +38,6 @@ int exec_function_system(shell_t *shell, char **envp, int i);
 char *check_path(char *path);
 int check_error_father(int wstatus);
 int check_getline(shell_t *shell, char **envp, int x, char *line);
-int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x);
 int check_line(char *line, shell_t *shell, int i);
 int exec_cd(shell_t *shell, char *path);
 int check_pipe(char **envp, char *line, shell_t *shell, int i);
@@ -49,9 +48,10 @@ int check_comma_function(char **envp, char *line, shell_t *shell, int x);
 int check_pipe_function(char **envp, char *line, shell_t *shell, int i);
 int check_error_main(char **envp, char *line, shell_t *shell, int x);
 int exec_first_arg(char **envp, char *line, shell_t *shell, int i);
+int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x);
 
 /*builtin*/
-int setting_env(char **env, shell_t *shell);
+int setting_env(char **envp, shell_t *shell);
 int cd_function(char **envp, shell_t *shell);
 int exit_function(char **argv, shell_t *shell);
 int unsetenv_function(char **envp, shell_t *shell);
@@ -122,6 +122,7 @@ char **clean_string(char **);
 int my_strcmp(char const *s1, char const *s2);
 
 /*separator*/
+int call_separator(char **envp, shell_t *shell, char *line, int x);
 int do_double_and(char **envp, char *line, shell_t *shell, int x);
 int do_double_or(char **envp, char *line, shell_t *shell, int x);
 int is_double_or(char *line);
