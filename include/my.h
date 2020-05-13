@@ -122,6 +122,8 @@ char **clean_string(char **);
 int my_strcmp(char const *s1, char const *s2);
 
 /*separator*/
+cmd_t *parse_cmd(char *line);
+separator_t find_separator(cmd_t *cmd, shell_t *shell);
 int call_separator(char **envp, shell_t *shell, char *line, int x);
 int do_double_and(char **envp, char *line, shell_t *shell, int x);
 int do_double_or(char **envp, char *line, shell_t *shell, int x);

@@ -42,26 +42,11 @@ char *fill_second_arg(shell_t *shell, int i, char *line)
 
 int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x)
 {
-    int i = 0;
-    int value = 0;
-
-    if (check_line(line, shell, i) != 2)
-        return 0;
-    while (value != 2) {
-        if (value == 0) {
-            shell->cmd = shell->comma->first_arg;
-            shell->array = my_str_to_world_array_pipe(shell->cmd);
-            value = 1;
-            if (my_function(shell, envp) == 84)
-                return 84;
-        } else if (value == 1) {
-            shell->cmd = shell->comma->second_arg;
-            shell->array = my_str_to_world_array_pipe(shell->cmd);
-            value = 2;
-            if (my_function(shell, envp) == 84)
-                return 84;
-        }
-    }
+    printf("line--->%s\n", line);
+    shell->cmd = line;
+    shell->array = my_str_to_world_array_pipe(shell->cmd);
+    if (my_function(shell, envp) == 84)
+        return 84;
     return 1;
 }
 

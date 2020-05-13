@@ -14,12 +14,11 @@ const separ_t map[] = {
     {"NULL"},
 };
 
-separator_t find_separator(char *value, shell_t *shell)
+separator_t find_separator(cmd_t *cmd, shell_t *shell)
 {
     int i = 0;
-
-    while (&map[i] != NULL) {
-        if (my_strcmp(map[i].value, value) == 0) {
+    while (&map[i]) {
+        if (my_strcmp(map[i].value, cmd->separator) == 0) {
             return (map[i].separator);
         }
         if (my_strcmp(map[i].value, "NULL") == 0)
@@ -31,14 +30,23 @@ separator_t find_separator(char *value, shell_t *shell)
 
 int call_separator(char **envp, shell_t *shell, char *line, int x)
 {
-    separator_t separator = find_separator(shell->array[0], shell);
+    cmd_t *cmd = parse_cmd(line);
+    separator_t separator = NULL;
 
-    if (!(separator))
-        return 0;
-    else {
-        if (separator(envp, line, shell, x) == 1)
-            return 1;
-        return 2;
+    printf("la\n");
+    while (cmd) {
+        printf("non\n");
+        separator = find_separator(cmd, shell);
+        if (!(separator)) {
+            return 0;
+        } else {
+            printf("ici\n");
+            if (separator(envp, cmd->cmd, shell, x) == 1) {
+                return 1;
+            }
+        }
+        cmd = cmd->next;
     }
+    printf("ptn\n");
     return 0;
 }

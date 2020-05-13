@@ -71,11 +71,8 @@ int principal_function(char **envp, shell_t *shell)
             my_putstr("exit\n");
             exit(0);
         }
-        /*while (line[i] != '\0') {
-            if ((x = call_separator(envp, shell, line, x)) == 1)
-                return 1;
-            i++;
-        }*/
+        if ((x = call_separator(envp, shell, line, x)) == 1)
+            return 1;
         if (x == 0) {
             check_getline(shell, envp, x, line);
         }
