@@ -20,9 +20,9 @@ BUILTIN =			src/builtin/call_function_recode.c 	\
 					src/builtin/backslash.c 			\
 					src/builtin/backslash_t.c 			\
 					src/builtin/other_setenv.c			\
+					src/builtin/comma_function.c 		\
 
-PIPE_COMMA =		src/pipe_comma/comma_function.c 	 \
-					src/pipe_comma/comma_or_pipe.c 		 \
+PIPE_COMMA =		src/pipe_comma/comma_or_pipe.c 		 \
 					src/pipe_comma/exec_first_pipe.c 	 \
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\

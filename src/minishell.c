@@ -73,9 +73,6 @@ int principal_function(char **envp, shell_t *shell)
         }
         if ((x = call_separator(envp, shell, line, x)) == 1)
             return 1;
-        if (x == 0) {
-            check_getline(shell, envp, x, line);
-        }
     }
     return 0;
 }

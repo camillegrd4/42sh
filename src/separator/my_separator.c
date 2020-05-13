@@ -33,20 +33,16 @@ int call_separator(char **envp, shell_t *shell, char *line, int x)
     cmd_t *cmd = parse_cmd(line);
     separator_t separator = NULL;
 
-    printf("la\n");
     while (cmd) {
-        printf("non\n");
         separator = find_separator(cmd, shell);
         if (!(separator)) {
             return 0;
         } else {
-            printf("ici\n");
             if (separator(envp, cmd->cmd, shell, x) == 1) {
                 return 1;
             }
         }
         cmd = cmd->next;
     }
-    printf("ptn\n");
-    return 0;
+    return 2;
 }

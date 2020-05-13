@@ -30,14 +30,14 @@ int check_or(char **separ)
         my_putstr("Invalid null command.\n");
         return 2;
     }
-    if (separ[1] && separ[1][0] == '\n') {
+    /*if (separ[1] && separ[1][0] == '\n') {
         my_putstr("Invalid null command.\n");
         return 2;
     }
     if (!separ[1]) {
         my_putstr("Invalid null command.\n");
         return 2;
-    }
+    }*/
     return 0;
 }
 
@@ -51,7 +51,7 @@ int do_double_or(char **envp, char *line, shell_t *shell, int x)
     if (check_or(separ) == 2)
         return 2;
     while (separ[i]) {
-        if (x != 0) {
+        if (x == 0) {
             return 0;
         } else {
             check_getline(shell, envp, 0, separ[i]);
