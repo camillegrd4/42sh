@@ -36,6 +36,7 @@ LIB =				lib/my_putchar.c 					\
 					lib/my_str_to_world_array.c 		\
 					lib/my_strcat.c 					\
 					lib/my_strncmp.c 					\
+					lib/my_revlist.c 					\
 					lib/my_str_to_world_array_pipe.c 	\
 					lib/my_strncmp_next.c 				\
 					lib/my_strdup.c						\
