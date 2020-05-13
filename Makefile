@@ -12,7 +12,6 @@ BUILTIN =			src/builtin/call_function_recode.c 	\
 					src/builtin/change_line.c 			\
 					src/builtin/env_function.c 			\
 					src/builtin/recode_function.c 		\
-					src/builtin/setenv_function.c 		\
 					src/builtin/echo_function.c 		\
 					src/builtin/backslash_echo.c 		\
 					src/builtin/echo_normal.c 			\

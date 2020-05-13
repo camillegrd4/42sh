@@ -9,7 +9,7 @@
 
 const recode_t tab[] = {
     { "echo", &echo_builtin },
-    { "setenv", &setenv_function },
+    { "setenv", &setting_env },
     { "env", &print_env},
     { "cd", &cd_function},
     { "exit", &exit_function},

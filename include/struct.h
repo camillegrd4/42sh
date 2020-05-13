@@ -50,4 +50,13 @@ typedef struct recode {
 
 extern const recode_t tab[];
 
+typedef int (*separator_t)(char **envp, char *line, shell_t *shell, int x);
+
+typedef struct separ {
+    const char *value;
+    separator_t separator;
+} separ_t;
+
+extern const separ_t map[];
+
 #endif /* !STRUCT_H */

@@ -55,7 +55,7 @@ char **setnew_env(shell_t *shell)
 {
     char **new_one = NULL;
     int i = 0;
-    
+
     if (shell->save_env == NULL)
         return NULL;
     new_one = malloc(sizeof(char *) * (tab_size(shell->save_env) + 2));
@@ -71,7 +71,7 @@ char **setnew_env(shell_t *shell)
     return new_one;
 }
 
-int setting_env(char **env, shell_t *shell)
+int setting_env(char **envp, shell_t *shell)
 {
     if (tab_size(shell->array) > 3) {
         my_putstr("setenv: Too many arguments.\n");
@@ -83,7 +83,7 @@ int setting_env(char **env, shell_t *shell)
         return 1;
     } else if (my_str_isalpha_num(shell->array[1]) == 1) {
         my_putstr("setenv: Variable name must contain "
-                  "alphanumeric characters.\n");
+                "alphanumeric characters.\n");
         return 1;
     } else
         shell->save_env = setnew_env(shell);

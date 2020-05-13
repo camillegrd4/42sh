@@ -55,7 +55,8 @@ char *return_one_cmd(char *line, int *i)
     return new;
 }
 
-cmd_t *parse_cmd(char *line) {
+cmd_t *parse_cmd(char *line) 
+{
     cmd_t *new_cmd = NULL;
     int i = 0;
     char *one_cmd = NULL;
