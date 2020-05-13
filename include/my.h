@@ -133,9 +133,6 @@ char x, char path);
 int is_or(char **envp, char *line, shell_t *shell, int x);
 int check_time(char **envp, char *line, shell_t *shell, int x);
 
-/*criterion*/
-void redirect_all_stdout(void);
-
 typedef int (*flags)(shell_t *shell);
 typedef int (*flags_separator)(char **envp, char *line, shell_t *shell, int x);
 #endif /* !MY_H */

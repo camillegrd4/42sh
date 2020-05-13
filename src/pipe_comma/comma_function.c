@@ -52,22 +52,21 @@ int check_path_comma(int a, shell_t *shell, char **envp)
 
 int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x)
 {
-    static int i = 0;
-    static int y = 0;
-    static int a = 0;
-    int value = 0;
+    int i = 0;
+    int y = 0;
+    int a = 0;
 
     x = 0;
     if (check_line(line, shell, i) == 0)
         return 0;
-    while (value != 2 && shell->path_bis[i]) {
+    while (shell->path_bis[i]) {
         if (shell->path_bis[i][y] == '\0')
             return 1;
         while (shell->path_bis[i][y] == ' ' || shell->path_bis[i][y] == ';')
             y++;
         if (shell->path_bis[i][y] != ';' && shell->path_bis[i][y] != ' ') {
             shell->array = my_str_to_world_array_pipe(shell->path_bis[i]);
-            value++;
+            //value++;
             if (check_path_comma(a, shell, envp) == 84) return 84;
         }
         i++;
