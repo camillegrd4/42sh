@@ -59,4 +59,12 @@ typedef struct separ {
 
 extern const separ_t map[];
 
+typedef int (*list_t)(char **envp, char *line, shell_t *shell, int x);
+
+typedef struct rafters {
+    const char *str;
+    list_t list;
+} rafters_t;
+
+extern const rafters_t lst[];
 #endif /* !STRUCT_H */

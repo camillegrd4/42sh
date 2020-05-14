@@ -5,58 +5,59 @@
 ## make
 ##
 
-BUILTIN =			src/builtin/call_function_recode.c 	\
-					src/builtin/cd_function.c 			\
-					src/builtin/unsetenv_function.c 	\
-					src/builtin/change_env.c 			\
-					src/builtin/change_line.c 			\
-					src/builtin/env_function.c 			\
-					src/builtin/recode_function.c 		\
-					src/builtin/echo_function.c 		\
-					src/builtin/backslash_echo.c 		\
-					src/builtin/echo_normal.c 			\
-					src/builtin/flags_n.c 				\
-					src/builtin/flags_e.c 				\
-					src/builtin/backslash.c 			\
-					src/builtin/backslash_t.c 			\
-					src/builtin/other_setenv.c			\
-					src/builtin/comma_function.c 		\
+BUILTIN =			src/builtin/call_function_recode.c 		\
+					src/builtin/cd_function.c 				\
+					src/builtin/unsetenv_function.c 		\
+					src/builtin/change_env.c 				\
+					src/builtin/change_line.c 				\
+					src/builtin/env_function.c 				\
+					src/builtin/recode_function.c 			\
+					src/builtin/echo_function.c 			\
+					src/builtin/backslash_echo.c 			\
+					src/builtin/echo_normal.c 				\
+					src/builtin/flags_n.c 					\
+					src/builtin/flags_e.c 					\
+					src/builtin/backslash.c 				\
+					src/builtin/backslash_t.c 				\
+					src/builtin/other_setenv.c				\
+					src/builtin/comma_function.c 			\
 
-PIPE_COMMA =		src/pipe_comma/comma_or_pipe.c 		 \
-					src/pipe_comma/exec_first_pipe.c 	 \
+PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
+					src/pipe_rafters/exec_first_pipe.c 		\
+					src/pipe_rafters/table_to_rafters.c 	\
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\
 					src/execve_function/check_function.c 	\
 					src/execve_function/find_path.c 		\
 					src/execve_function/exec_function.c 	\
 
-LIB =				lib/my_putchar.c 					\
-					lib/my_putstr.c 					\
-					lib/my_strlen.c 					\
-					lib/my_str_to_world_array.c 		\
-					lib/my_strcat.c 					\
-					lib/my_strncmp.c 					\
-					lib/my_revlist.c 					\
-					lib/my_str_to_world_array_pipe.c 	\
-					lib/my_strncmp_next.c 				\
-					lib/my_strdup.c						\
-					lib/my_strcat_two.c 				\
-					lib/my_str_to_world_array_comma.c 	\
-					lib/my_str_to_wordtab.c 			\
-					lib/clean_string.c 					\
-					lib/tab_len.c 						\
-					lib/my_strcmp.c 					\
+LIB =				lib/my_putchar.c 						\
+					lib/my_putstr.c 						\
+					lib/my_strlen.c 						\
+					lib/my_str_to_world_array.c 			\
+					lib/my_strcat.c 						\
+					lib/my_strncmp.c 						\
+					lib/my_revlist.c 						\
+					lib/my_str_to_world_array_pipe.c 		\
+					lib/my_strncmp_next.c 					\
+					lib/my_strdup.c							\
+					lib/my_strcat_two.c 					\
+					lib/my_str_to_world_array_comma.c 		\
+					lib/my_str_to_wordtab.c 				\
+					lib/clean_string.c 						\
+					lib/tab_len.c 							\
+					lib/my_strcmp.c 						\
 
-SEPARATOR = 		src/separator/do_double_and.c 		\
-					src/separator/do_double_or.c 		\
-					src/separator/my_separator.c 		\
-					src/separator/parse_cmd.c 			\
+SEPARATOR = 		src/separator/do_double_and.c 			\
+					src/separator/do_double_or.c 			\
+					src/separator/my_separator.c 			\
+					src/separator/parse_cmd.c 				\
 
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\
 				src/init_struct.c 				\
 				$(BUILTIN)						\
-				$(PIPE_COMMA)					\
+				$(PIPE_RAFTERS)					\
 				$(EXECVE_FUNCTION)				\
 				$(LIB)							\
 				$(SEPARATOR) 					\

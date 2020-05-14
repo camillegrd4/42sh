@@ -7,6 +7,20 @@
 
 #include "my.h"
 
+int my_strcmp_char(char const *s1, char const s2)
+{
+    int i = 0;
+
+    if (!s1 || !s2)
+        return 84;
+    if (s1[i] == s2) {
+        return (s1[i] - s2);
+    } else {
+        i++;
+    }
+    return (s1[i] - s2);
+}
+
 int my_strcmp(char const *s1, char const *s2)
 {
     int i = 0;
