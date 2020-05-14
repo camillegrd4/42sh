@@ -44,5 +44,6 @@ int call_separator(char **envp, shell_t *shell, char *line, int x)
         }
         cmd = cmd->next;
     }
+    free_keys(cmd);
     return 2;
 }

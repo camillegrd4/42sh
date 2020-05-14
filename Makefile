@@ -53,6 +53,29 @@ SEPARATOR = 		src/separator/do_double_and.c 			\
 					src/separator/my_separator.c 			\
 					src/separator/parse_cmd.c 				\
 
+LIB =				lib/my_putchar.c 					\
+					lib/my_putstr.c 					\
+					lib/my_strlen.c 					\
+					lib/my_str_to_world_array.c 		\
+					lib/my_strcat.c 					\
+					lib/my_strncmp.c 					\
+					lib/my_revlist.c 					\
+					lib/my_str_to_world_array_pipe.c 	\
+					lib/my_strncmp_next.c 				\
+					lib/my_strdup.c						\
+					lib/my_strcat_two.c 				\
+					lib/my_str_to_world_array_comma.c 	\
+					lib/my_str_to_wordtab.c 			\
+					lib/clean_string.c 					\
+					lib/tab_len.c 						\
+					lib/my_strcmp.c 					\
+
+SEPARATOR = 		src/separator/do_double_and.c 		\
+					src/separator/do_double_or.c 		\
+					src/separator/my_separator.c 		\
+					src/separator/parse_cmd.c 			\
+					src/separator/free_list.c 			\
+
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\
 				src/init_struct.c 				\
