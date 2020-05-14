@@ -48,8 +48,8 @@ int do_double_or(char **envp, char *line, shell_t *shell, int x)
 
     separ = str_to_wordtab(line, "|");
     separ = clean_string(separ);
-    if (check_or(separ) == 2)
-        return 2;
+    //if (check_or(separ) == 2)
+        //return 2;
     while (separ[i]) {
         if (x == 0) {
             return 0;
