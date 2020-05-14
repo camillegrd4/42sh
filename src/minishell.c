@@ -43,16 +43,6 @@ int check_getline(shell_t *shell, char **envp, int x, char *line)
     return 0;
 }
 
-int check_error_main(char **envp, char *line, shell_t *shell, int x)
-{
-    if (x == 1 || x == 84)
-        return x;
-    else if (x != 2) {
-        check_getline(shell, envp, x, line);
-    }
-    return 0;
-}
-
 int principal_function(char **envp, shell_t *shell)
 {
     size_t n = 0;
@@ -63,7 +53,6 @@ int principal_function(char **envp, shell_t *shell)
     while (1) {
         i = 0;
         x = 0;
-        shell->command_done = 0;
         if (isatty(STDIN_FILENO) == 1)
             my_putstr("$ > ");
         if (x = getline(&line, &n, stdin) == -1) {
