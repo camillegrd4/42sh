@@ -31,18 +31,19 @@ separator_t find_separator(cmd_t *cmd, shell_t *shell)
 int call_separator(char **envp, shell_t *shell, char *line, int x)
 {
     cmd_t *cmd = parse_cmd(line);
+    cmd_t *tmp = cmd;
     separator_t separator = NULL;
 
-    while (cmd) {
-        separator = find_separator(cmd, shell);
+    while (tmp) {
+        separator = find_separator(tmp, shell);
         if (!(separator)) {
             return 0;
         } else {
-            if (separator(envp, cmd->cmd, shell, x) == 1) {
+            if (separator(envp, tmp->cmd, shell, x) == 1) {
                 return 1;
             }
         }
-        cmd = cmd->next;
+        tmp = tmp->next;
     }
     free_list(&cmd);
     return 2;
