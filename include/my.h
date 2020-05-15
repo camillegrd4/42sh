@@ -122,7 +122,7 @@ int tab_len(char **);
 char **clean_string(char **);
 int my_strcmp(char const *s1, char const *s2);
 void my_rev_list(cmd_t **);
-void free_list(cmd_t **);
+void free_list(cmd_t *);
 int my_strcmp_char(char const *s1, char const s2);
 
 /*separator*/

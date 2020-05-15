@@ -45,6 +45,7 @@ int call_separator(char **envp, shell_t *shell, char *line, int x)
         }
         tmp = tmp->next;
     }
-    free_list(&cmd);
+    free_list(cmd);
+    cmd = NULL;
     return 2;
 }

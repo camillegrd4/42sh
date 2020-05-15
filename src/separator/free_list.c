@@ -7,16 +7,15 @@
 
 #include "my.h"
 
-void free_list(cmd_t **head_ref)
+void free_list(cmd_t *head)
 {
-    cmd_t *current = *head_ref;
-    cmd_t *next;
+    cmd_t *curr = head;
+    cmd_t *to_free = head;
 
-    while (current != NULL) {
-        next = current->next;
-        free(current->cmd);
-        free(current);
-        current = next;
+    while (to_free != NULL) {
+        curr = curr->next;
+        free(to_free->cmd);
+        free(to_free);
+        to_free = curr;
     }
-    *head_ref = NULL;
 }
