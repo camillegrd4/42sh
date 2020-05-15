@@ -7,15 +7,15 @@
 
 #include "my.h"
 
-void free_keys(cmd_t *cmd)
+void free_keys(cmd_t **cmd)
 {
     cmd_t *tmp;
 
     if (!cmd)
         return;
-    while (cmd) {
-        tmp = cmd;
-        cmd = cmd->next;
+    while (*cmd) {
+        tmp = *cmd;
+        *cmd = (*cmd)->next;
         free(tmp);
     }
 }
