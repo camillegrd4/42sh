@@ -16,6 +16,8 @@ void free_list(cmd_t **cmd)
     while (*cmd) {
         tmp = *cmd;
         *cmd = (*cmd)->next;
+        free(tmp->cmd);
+        free(tmp->separator);
         free(tmp);
     }
 }
