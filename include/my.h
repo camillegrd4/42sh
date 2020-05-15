@@ -47,8 +47,9 @@ int check_function(char **envp, shell_t *shell, char *line, int i);
 int check_comma_function(char **envp, char *line, shell_t *shell, int x);
 int check_pipe_function(char **envp, char *line, shell_t *shell, int i);
 int check_error_main(char **envp, char *line, shell_t *shell, int x);
-int exec_first_arg(char **envp, char *line, shell_t *shell, int i);
+int exec_first_arg(char **envp, char *line, shell_t *shell, int x);
 int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x);
+int call_rafters(char *line, char **envp, shell_t *shell, int x);
 
 /*builtin*/
 int setting_env(char **envp, shell_t *shell);
@@ -122,6 +123,7 @@ char **clean_string(char **);
 int my_strcmp(char const *s1, char const *s2);
 void my_rev_list(cmd_t **);
 void free_list(cmd_t **);
+int my_strcmp_char(char const *s1, char const s2);
 
 /*separator*/
 cmd_t *parse_cmd(char *line);

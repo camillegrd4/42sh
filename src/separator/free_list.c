@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-void free_keys(cmd_t **cmd)
+void free_list(cmd_t **cmd)
 {
     cmd_t *tmp;
 

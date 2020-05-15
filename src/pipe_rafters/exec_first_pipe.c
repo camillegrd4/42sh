@@ -10,9 +10,9 @@
 static int exec_father(pid_t pid, shell_t *shell, char **envp, int fd[2])
 {
     int y = 0;
-    shell->array =
-            my_str_to_world_array_pipe(shell->comma->second_arg_pipe);
-    if (shell->comma->second_arg_pipe[y] == '\n') {
+
+    shell->array = my_str_to_world_array_pipe(shell->path_bis[1]);
+    if (shell->array[y][y] == '\n') {
         my_putstr("Invalid null command.\n");
         return 1;
     }
@@ -28,7 +28,7 @@ static int exec_father(pid_t pid, shell_t *shell, char **envp, int fd[2])
 
 static int exec_child(shell_t *shell, pid_t pid, char **envp, int *fd)
 {
-    shell->array = my_str_to_world_array_pipe(shell->comma->first_arg_pipe);
+    shell->array = my_str_to_world_array_pipe(shell->path_bis[0]);
     close(fd[0]);
     dup2(fd[1], 1);
     if (call_builtin(envp, shell) == 1)
@@ -54,12 +54,15 @@ static int exec_arg(pid_t pid, shell_t *shell, char **envp, int *fd)
     return 0;
 }
 
-int exec_first_arg(char **envp, char *line, shell_t *shell, int i)
+int exec_first_arg(char **envp, char *line, shell_t *shell, int x)
 {
     pid_t pid;
     int fd[2];
-    int x = 0;
+    char **separ = malloc(sizeof(char) * (my_strlen(line) + 1));
 
+    shell->cmd = line;
+    shell->path_bis = str_to_wordtab(line, "|");
+    shell->path_bis = clean_string(shell->path_bis);
     if ((pid = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;
