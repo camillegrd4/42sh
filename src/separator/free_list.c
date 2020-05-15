@@ -7,19 +7,13 @@
 
 #include "my.h"
 
-void free_list(cmd_t **head_ref)  
+void free_list(cmd_t **head)  
 {
-    cmd_t *current = *head_ref;
-    cmd_t *next;
+    cmd_t *curr;
 
-    while (current != NULL)
-    {
-        next = current->next;
-        free(current);
-        free(current->separator);
-        free(current->cmd);
-        current = next;
+    while ((curr = *head) != NULL) { // set curr to head, stop if list empty.
+        *head = (*head)->next;          // advance head to next element.
+        free (curr);                // delete saved pointer
     }
-    *head_ref = NULL;  
 }
  
