@@ -51,6 +51,8 @@ int call_separator(char **envp, shell_t *shell, char *line, int x)
         if (!(separator)) {
             return 0;
         } else {
+            //printf("cmd--->[%s]\n", tmp->cmd);
+            //printf("separ-->[%s]\n", tmp->separator);
             x = separator(envp, tmp->cmd, shell, x);
         }
         tmp = tmp->next;
