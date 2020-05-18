@@ -48,12 +48,6 @@ LIB =				lib/my_putchar.c 						\
 					lib/tab_len.c 							\
 					lib/my_strcmp.c 						\
 
-SEPARATOR = 		src/separator/do_double_and.c 			\
-					src/separator/do_double_or.c 			\
-					src/separator/my_separator.c 			\
-					src/separator/parse_cmd.c 				\
-					src/separator/is_not_separator.c 		\
-
 LIB =				lib/my_putchar.c 					\
 					lib/my_putstr.c 					\
 					lib/my_strlen.c 					\
@@ -76,6 +70,7 @@ SEPARATOR = 		src/separator/do_double_and.c 		\
 					src/separator/my_separator.c 		\
 					src/separator/parse_cmd.c 			\
 					src/separator/free_list.c 			\
+					src/separator/is_not_separator.c 	\
 
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\
