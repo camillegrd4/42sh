@@ -52,7 +52,6 @@ int principal_function(char **envp, shell_t *shell)
 
     while (1) {
         i = 0;
-        x = 0;
         if (isatty(STDIN_FILENO) == 1)
             my_putstr("$ > ");
         if (x = getline(&line, &n, stdin) == -1) {
@@ -60,8 +59,7 @@ int principal_function(char **envp, shell_t *shell)
             my_putstr("exit\n");
             exit(0);
         }
-        if ((x = call_separator(envp, shell, line, x)) == 1)
-            return 1;
+        x = call_separator(envp, shell, line, x);
     }
     return 0;
 }
