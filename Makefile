@@ -25,6 +25,7 @@ BUILTIN =			src/builtin/call_function_recode.c 		\
 PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/exec_first_pipe.c 		\
 					src/pipe_rafters/table_to_rafters.c 	\
+					src/pipe_rafters/double_rafter.c 		\
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\
 					src/execve_function/check_function.c 	\
