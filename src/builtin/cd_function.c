@@ -89,7 +89,6 @@ int cd_function(char **envp, shell_t *shell)
         }
     } else {
         if (cd_normal(shell, shell->array[1], value, save) == 1) {
-            shell->error = 1;
             return 1;
         }
     }
