@@ -29,6 +29,7 @@ int double_rafter(char **envp, char *line, shell_t *shell, int x)
     int fd[2];
     char **separ = malloc(sizeof(char) * (my_strlen(line) + 1));
 
+    printf("coucou\n");
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, ">");
     shell->path_bis = clean_string(shell->path_bis);

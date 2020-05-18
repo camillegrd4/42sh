@@ -11,7 +11,6 @@ const rafters_t lst[] = {
     { ">>", &double_rafter},
     //{ "<<", &cd_function},
     //{ ">", &echo_builtin },
-    //{ ">>", &print_env },
     //{ "<<", &cd_function },
     { ">", &redirections_function },
     //{ "<", &setting_env },
@@ -35,6 +34,16 @@ list_t find_rafters(char str, shell_t *shell)
     return NULL;
 }
 
+int check_separ(char *line, int i)
+{
+    if ((line[i] == '|' && line[i + 1] != '|' && line[i - 1] != '|')
+    || (line[i] == '>' && line[i + 1] == '>' && line[i - 1] != '>'
+    && line[i + 2] != '>')
+    || (line[i] == '>' && line[i + 1] != '>' && line[i - 1] != '>'))
+        return 1;
+    return 0;
+}
+
 int call_rafters(char *line, char **envp, shell_t *shell, int x)
 {
     list_t list = NULL;
@@ -42,7 +51,7 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
     int value = 0;
 
     while (line[i]) {
-        if (line[i] == '|' && line[i + 1] != '|' && line[i - 1] != '|') {
+        if (check_separ(line, i) == 1) {
             value = 1;
             list = find_rafters(line[i], shell);
             if (!(list))
