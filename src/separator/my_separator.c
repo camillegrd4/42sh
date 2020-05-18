@@ -9,7 +9,7 @@
 
 const separ_t map[] = {
     { "||", &do_double_or },
-    { "&&", &check_time },
+    { "&&", &do_double_and },
     { ";", &call_exec_comma_function },
     {"NULL"},
 };

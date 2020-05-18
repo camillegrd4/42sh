@@ -8,8 +8,8 @@
 #include "my.h"
 
 const rafters_t lst[] = {
-    //{ ">>", &print_env},
-    //{ "<<", &cd_function},
+    //{ ">>", &print_env },
+    //{ "<<", &cd_function },
     //{ ">", &echo_builtin },
     //{ "<", &setting_env },
     { "|", &exec_first_arg},
