@@ -30,14 +30,14 @@ int check_or(char **separ)
         my_putstr("Invalid null command.\n");
         return 2;
     }
-    /*if (separ[1] && separ[1][0] == '\n') {
+    if (separ[1] && separ[1][0] == '\n') {
         my_putstr("Invalid null command.\n");
         return 2;
     }
     if (!separ[1]) {
         my_putstr("Invalid null command.\n");
         return 2;
-    }*/
+    }
     return 0;
 }
 
@@ -53,7 +53,9 @@ int do_double_or(char **envp, char *line, shell_t *shell, int x)
         if (x == 0) {
             return 0;
         } else {
-            check_getline(shell, envp, 0, separ[i]);
+            x = call_rafters(line, envp, shell, x);
+            if (x != 1)
+                check_getline(shell, envp, 0, separ[i]);
         }
         i++;
     }

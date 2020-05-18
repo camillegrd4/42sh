@@ -39,7 +39,7 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
     int value = 0;
 
     while (line[i]) {
-        if (line[i] == '|') {
+        if (line[i] == '|' && line[i + 1] != '|' && line[i - 1] != '|') {
             value = 1;
             list = find_rafters(line[i], shell);
             if (!(list))
