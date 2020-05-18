@@ -55,9 +55,6 @@ int do_double_and(char **envp, char *line, shell_t *shell, int x)
 
     separ = str_to_wordtab(line, "&");
     separ = clean_string(separ);
-    /*if ((i = check_and(separ, i)) == 2)
-        return 1;*/
-    printf("x--->%i\n", x);
     while (separ[i]) {
         if (x != 0) {
             return 0;

@@ -48,8 +48,6 @@ int call_separator(char **envp, shell_t *shell, char *line, int x)
     tmp = cmd;
     while (tmp) {
         separator = find_separator(tmp, shell);
-        //printf("cmd-->%s\n", tmp->cmd);
-        //printf("separ-->%s\n", tmp->separator);
         if (!(separator)) {
             return 0;
         } else {

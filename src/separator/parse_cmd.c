@@ -44,9 +44,9 @@ int is_end(char c)
     const char str[2] = "\0\n";
     int i = 0;
 
-    while (i != sizeof(str)) { 
+    while (i != sizeof(str)) {
         if (c == str[i])
-            return 1; 
+            return 1;
         i++;
     }
     return 0;
