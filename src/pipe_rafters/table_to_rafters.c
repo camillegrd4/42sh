@@ -10,7 +10,7 @@
 const rafters_t lst[] = {
     //{ ">>", &print_env },
     //{ "<<", &cd_function },
-    { ">", &echo_builtin },
+    { ">", &redirections_function },
     //{ "<", &setting_env },
     { "|", &exec_first_arg},
     {"NULL"},
