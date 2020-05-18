@@ -65,8 +65,9 @@ char **setnew_env(shell_t *shell)
         i++;
     }
     new_one[i] = my_strcat_env(shell->array[1], "=");
-    if (tab_size(shell->array) == 3)
+    if (tab_size(shell->array) == 3) {
         new_one[i] = my_strcat_env(new_one[i], shell->array[2]);
+    }
     new_one[i + 1] = NULL;
     return new_one;
 }
@@ -77,6 +78,10 @@ int setting_env(char **envp, shell_t *shell)
         my_putstr("setenv: Too many arguments.\n");
         return 1;
     }
+    if (tab_size(shell->array) == 1) {
+        print_env(envp, shell);
+        return 0;
+    }
     if ((shell->array[1][0] < 'a' || shell->array[1][0] > 'z') &&
         (shell->array[1][0] < 'A' || shell->array[1][0] > 'Z')) {
         my_putstr("setenv: Variable name must begin with a letter.\n");
@@ -85,7 +90,8 @@ int setting_env(char **envp, shell_t *shell)
         my_putstr("setenv: Variable name must contain "
                 "alphanumeric characters.\n");
         return 1;
-    } else
+    } else {
         shell->save_env = setnew_env(shell);
+    }
     return 0;
 }
