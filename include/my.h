@@ -138,6 +138,7 @@ int my_pattern_separator(char **envp, char *line, shell_t *shell,
 char x, char path);
 int is_or(char **envp, char *line, shell_t *shell, int x);
 int check_time(char **envp, char *line, shell_t *shell, int x);
+int is_not_separator(char, char, char);
 
 typedef int (*flags)(shell_t *shell);
 typedef int (*flags_separator)(char **envp, char *line, shell_t *shell, int x);
