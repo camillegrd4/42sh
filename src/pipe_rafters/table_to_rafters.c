@@ -8,7 +8,7 @@
 #include "my.h"
 
 const rafters_t lst[] = {
-    { ">>", &double_rafter},
+    //{ ">>", &double_rafter},
     //{ "<<", &cd_function},
     //{ ">", &echo_builtin },
     //{ "<<", &cd_function },
