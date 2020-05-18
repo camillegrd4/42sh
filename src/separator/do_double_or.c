@@ -45,7 +45,6 @@ int do_double_or(char **envp, char *line, shell_t *shell, int x)
 {
     char **separ = NULL;
     int i = 0;
-
     separ = str_to_wordtab(line, "|");
     separ = clean_string(separ);
     //if (check_or(separ) == 2)

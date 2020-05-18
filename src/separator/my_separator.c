@@ -28,20 +28,30 @@ separator_t find_separator(cmd_t *cmd, shell_t *shell)
     return NULL;
 }
 
+int line_value(char line)
+{
+    int i = 0;
+
+    if (line == '\n')
+        return 1;
+    return 0;
+}
+
 int call_separator(char **envp, shell_t *shell, char *line, int x)
 {
-    cmd_t *cmd = parse_cmd(line);
-    cmd_t *tmp = cmd;
+    cmd_t *cmd = NULL;
+    cmd_t *tmp = NULL;
     separator_t separator = NULL;
 
+    if (line_value(line[0]) == 1) return 0;
+    cmd = parse_cmd(line);
+    tmp = cmd;
     while (tmp) {
         separator = find_separator(tmp, shell);
         if (!(separator)) {
             return 0;
         } else {
-            if (separator(envp, tmp->cmd, shell, x) == 1) {
-                return 1;
-            }
+            x = separator(envp, tmp->cmd, shell, x);
         }
         tmp = tmp->next;
     }
