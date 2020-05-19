@@ -47,9 +47,9 @@ char *compare_string(char *str, char *line)
     return NULL;
 }
 
-char *check_alias(char *line)
+char *check_alias(char *line, shell_t *shell)
 {
-    FILE *fd = fopen("alias.txt", "a+");
+    FILE *fd = fopen(get_alias_path(shell), "a+");
     char str[TAILLE_MAX] = "";
     char *string = NULL;
 

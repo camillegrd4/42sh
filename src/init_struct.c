@@ -10,12 +10,15 @@
 shell_t *init_struct_minishell(char **envp)
 {
     int i = 0;
+    char *buf = NULL;
+    size_t n = 0;
 
     if (!envp)
         return NULL;
     shell_t *shell = malloc(sizeof(shell_t));
     if (!shell)
         return NULL;
+    shell->first_path = getcwd(buf, n);
     shell->array = NULL;
     shell->cmd = NULL;
     shell->path = NULL;

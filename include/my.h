@@ -19,6 +19,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <fcntl.h>
+#include <limits.h>
 #include "stdbool.h"
 #include "struct.h"
 
@@ -92,10 +93,11 @@ char *remove_caract(char *str);
 int backslash_r(shell_t *shell);
 int flags_e(shell_t *shell);
 int alias_function(char **envp, shell_t *shell);
-char *check_alias(char *line);
+char *check_alias(char *line, shell_t *shell);
 char *change_string(char *str, char *line, int j, int i);
 int calc_len(char *str);
 int check_input(shell_t *);
+char *get_alias_path(shell_t *shell);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);

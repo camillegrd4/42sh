@@ -9,6 +9,7 @@
 #define STRUCT_H
 
 typedef struct shell {
+    char *first_path;
     char *cmd;
     char **array;
     char *path;
