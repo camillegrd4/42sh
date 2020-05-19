@@ -42,6 +42,7 @@ static int exec_child(shell_t *shell, pid_t pid, char **envp, int *fd)
 static int exec_arg(pid_t pid, shell_t *shell, char **envp, int *fd)
 {
     pid_t pid_two;
+
     if ((pid_two = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;
@@ -54,15 +55,52 @@ static int exec_arg(pid_t pid, shell_t *shell, char **envp, int *fd)
     return 0;
 }
 
+int is_multiple_pipes(char *line)
+{
+    int i = 0;
+    int result = 0;
+
+    while (line[i]) {
+        if (line[i] == '|')
+            result += 1;
+        i += 1;
+    }
+    if (result > 1)
+        return result;
+    else 
+        return 0;
+}
+
+char *create_new_line_without_old_args(char **buffer)
+{
+    char *result = malloc(sizeof(char *) * tab_len(buffer));
+    char *temp = NULL;
+    int i = 1;
+
+    printf("caca \n");
+    while(buffer[i])
+    {
+        temp = my_strcat(buffer[i], buffer[i + 1]);
+        printf("BITE %s\n", temp);
+        //result = my_strdup(buffer[i]);
+        i++;
+    }
+    return result;
+}
+
 int exec_first_arg(char **envp, char *line, shell_t *shell, int x)
 {
     pid_t pid;
     int fd[2];
-    char **separ = malloc(sizeof(char) * (my_strlen(line) + 1));
+    int turn = is_multiple_pipes(line);
+    char *new_line = NULL;
 
+    printf("BITE PUTAIN x %d\n", x);
+    printf("turn %d\n", turn);
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, "|");
     shell->path_bis = clean_string(shell->path_bis);
+    create_new_line_without_old_args(shell->path_bis);
     if ((pid = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;
@@ -74,6 +112,12 @@ int exec_first_arg(char **envp, char *line, shell_t *shell, int x)
         my_putstr("Erreur pipe\n");
         return 1;
     }
-    exec_arg(pid, shell, envp, fd);
+    //exec_arg(pid, shell, envp, fd);
+    if (x != turn - 1) {
+        new_line = NULL;
+        turn -= 1;
+        exec_first_arg(envp, new_line, shell, turn);
+    }
+    return 2;
     _exit(EXIT_SUCCESS);
 }
