@@ -7,9 +7,17 @@
 
 #include "my.h"
 
+char *get_alias_path(shell_t *shell)
+{
+    char *str = my_strdup("alias.txt");
+    char *tmp = my_strcat(shell->first_path, str);
+
+    return tmp;
+}
+
 int alias_function(char **envp, shell_t *shell)
 {
-    FILE *fd = fopen("alias.txt", "a+");
+    FILE *fd = fopen(get_alias_path(shell), "a+");
     int i = 1;
 
     if (!fd)

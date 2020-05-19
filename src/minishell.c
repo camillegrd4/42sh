@@ -59,7 +59,7 @@ int principal_function(char **envp, shell_t *shell)
             my_putstr("exit\n");
             exit(0);
         }
-        line = check_alias(line);
+        line = check_alias(line, shell);
         x = call_separator(envp, shell, line, x);
     }
     return 0;
