@@ -147,6 +147,11 @@ int is_or(char **envp, char *line, shell_t *shell, int x);
 int check_time(char **envp, char *line, shell_t *shell, int x);
 int is_not_separator(char, char, char);
 
+/*prompt user*/
+void prompt_user(shell_t *shell);
+char *get_username();
+char *get_host();
+
 typedef int (*flags)(shell_t *shell);
 typedef int (*flags_separator)(char **envp, char *line, shell_t *shell, int x);
 #endif /* !MY_H */

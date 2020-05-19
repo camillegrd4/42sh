@@ -77,6 +77,10 @@ SEPARATOR = 		src/separator/do_double_and.c 		\
 					src/separator/free_list.c 			\
 					src/separator/is_not_separator.c 	\
 
+PROMPT = 			src/user/prompt_user.c 				\
+					src/user/get_username.c 			\
+					src/user/get_host.c    				\
+
 SRCS	=		src/main.c 						\
 				src/minishell.c 				\
 				src/init_struct.c 				\
@@ -85,6 +89,7 @@ SRCS	=		src/main.c 						\
 				$(EXECVE_FUNCTION)				\
 				$(LIB)							\
 				$(SEPARATOR) 					\
+				$(PROMPT)						\
 
 CFLAGS	=	-I ./include -g
 

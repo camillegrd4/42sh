@@ -28,6 +28,8 @@ shell_t *init_struct_minishell(char **envp)
     shell->pos = 0;
     shell->echo_path = NULL;
     shell->command_done = 0;
+    shell->username = get_username();
+    shell->host = get_host();
     shell->comma = malloc(sizeof(comma_t));
     return shell;
 }
