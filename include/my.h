@@ -91,6 +91,10 @@ int backslash_t(shell_t *shell);
 char *remove_caract(char *str);
 int backslash_r(shell_t *shell);
 int flags_e(shell_t *shell);
+int alias_function(char **envp, shell_t *shell);
+char *check_alias(char *line);
+char *change_string(char *str, char *line, int j, int i);
+int calc_len(char *str);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);

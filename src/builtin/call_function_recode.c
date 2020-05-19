@@ -10,10 +10,11 @@
 const recode_t tab[] = {
     { "echo", &echo_builtin },
     { "setenv", &setting_env },
-    { "env", &print_env},
-    { "cd", &cd_function},
-    { "exit", &exit_function},
-    {"unsetenv", &unsetenv_function},
+    { "env", &print_env },
+    { "cd", &cd_function },
+    { "exit", &exit_function },
+    {"unsetenv", &unsetenv_function },
+    {"alias", &alias_function },
     {"NULL"},
 };
 

@@ -22,6 +22,9 @@ BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/other_setenv.c				\
 					src/builtin/comma_function.c 			\
 					src/builtin/redirections.c				\
+					src/builtin/alias_function.c 			\
+					src/builtin/add_alias.c 	 			\
+					src/builtin/change_string.c	 			\
 
 PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/exec_first_pipe.c 		\
