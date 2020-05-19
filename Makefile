@@ -21,7 +21,6 @@ BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/backslash_t.c 				\
 					src/builtin/other_setenv.c				\
 					src/builtin/comma_function.c 			\
-					src/builtin/redirections.c				\
 					src/builtin/alias_function.c 			\
 					src/builtin/add_alias.c 	 			\
 					src/builtin/change_string.c	 			\
@@ -30,6 +29,7 @@ PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/exec_first_pipe.c 		\
 					src/pipe_rafters/table_to_rafters.c 	\
 					src/pipe_rafters/double_rafter.c 		\
+					src/pipe_rafters/redirections.c			\
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\
 					src/execve_function/check_function.c 	\

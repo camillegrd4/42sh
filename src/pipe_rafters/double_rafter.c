@@ -54,6 +54,8 @@ int double_rafter(char **envp, char *line, shell_t *shell, int x)
         waitpid(pid, NULL, 0);
         return 2;
     }
+    if (check_input(shell) == 1)
+        return 1;
     make_redirect(pid, shell, envp);
     _exit(EXIT_SUCCESS);
 }

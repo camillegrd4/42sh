@@ -95,6 +95,7 @@ int alias_function(char **envp, shell_t *shell);
 char *check_alias(char *line);
 char *change_string(char *str, char *line, int j, int i);
 int calc_len(char *str);
+int check_input(shell_t *);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
