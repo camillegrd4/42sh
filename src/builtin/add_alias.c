@@ -19,6 +19,7 @@ int alias_function(char **envp, shell_t *shell)
             fprintf(fd, "%s ", shell->array[i]);
             i++;
         }
+        fprintf(fd, "%s", "\n");
         fprintf(fd, "%c", '\0');
         fclose(fd);
     } else {

@@ -15,7 +15,8 @@ int number_char_colon(char *str, int i)
         return 84;
     while (str[i] != '\0') {
         if ((str[i] == ':' || str[i] == ' ' || str[i] == '\t' && str[i] != '|')
-        && (str[i + 1] != ':' && str[i + 1] != ' ' && str[i + 1] != '\t'))
+        && (str[i + 1] != ':' && str[i + 1] != ' '
+        && str[i + 1] != '\t'))
             number_char += 1;
         i += 1;
     }
