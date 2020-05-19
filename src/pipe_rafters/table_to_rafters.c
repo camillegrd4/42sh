@@ -8,10 +8,10 @@
 #include "my.h"
 
 const rafters_t lst[] = {
+    { "<", &reverse_function },
     { "<<", &double_rev_rafter},
     { ">>", &double_rafter},
     { ">", &redirections_function },
-    //{ "<", &setting_env },
     { "|", &exec_first_arg},
     {"NULL"},
 };
@@ -39,7 +39,8 @@ int check_separ(char *line, int i)
     && line[i + 2] != '>')
     || (line[i] == '>' && line[i + 1] != '>' && line[i - 1] != '>')
     || (line[i] == '<' && line[i + 1] == '<' && line[i - 1] != '<'
-    && line[i + 2] != '<'))
+    && line[i + 2] != '<')
+    || (line[i] == '<' && line[i + 1] != '<' && line[i - 1] != '<'))
         return 1;
     return 0;
 }
