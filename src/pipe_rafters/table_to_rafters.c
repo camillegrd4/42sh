@@ -14,7 +14,7 @@ const rafters_t lst[] = {
     //{ "<<", &cd_function },
     { ">", &redirections_function },
     //{ "<", &setting_env },
-    { "|", &exec_first_arg},
+    //{ "|", &exec_first_arg},
     {"NULL"},
 };
 
@@ -51,8 +51,11 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
     int value = 0;
 
     while (line[i]) {
-        if (check_separ(line, i) == 1) {
+        if (line[i] == '|' && value == 0) {
             value = 1;
+            exec_first_arg(envp, line, shell, x);
+        }
+        if (check_separ(line, i) == 1) {
             list = find_rafters(line[i], shell);
             if (!(list))
                 return 0;
