@@ -53,13 +53,13 @@ int principal_function(char **envp, shell_t *shell)
     while (1) {
         i = 0;
         if (isatty(STDIN_FILENO) == 1)
-            my_putstr("$ > ");
+            prompt_user(shell);
         if (x = getline(&line, &n, stdin) == -1) {
             free(shell);
             my_putstr("exit\n");
             exit(0);
         }
-        line = check_alias(line);
+        line = check_alias(line, shell);
         x = call_separator(envp, shell, line, x);
     }
     return 0;

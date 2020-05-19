@@ -25,6 +25,8 @@ int calc_len(char *str)
 int compare(char *line, char *str, int j, int i)
 {
     while (line[i] != ' ' && line[i] != '\n') {
+        if (str[j] == '\"')
+            j++;
         if (str[j] != line[i])
             return -1;
         j++;
@@ -36,20 +38,20 @@ int compare(char *line, char *str, int j, int i)
 char *compare_string(char *str, char *line)
 {
     int i = 0;
-    int j = 1;
+    static int j = 1;
 
-    if ((i = compare(line, str, j, i)) == -1)
+    if ((i = compare(line, str, j, i)) == -1) {
         return NULL;
-    else {
+    } else {
         line = change_string(str, line, j, i);
         return line;
     }
     return NULL;
 }
 
-char *check_alias(char *line)
+char *check_alias(char *line, shell_t *shell)
 {
-    FILE *fd = fopen("alias.txt", "a+");
+    FILE *fd = fopen(get_alias_path(shell), "a+");
     char str[TAILLE_MAX] = "";
     char *string = NULL;
 

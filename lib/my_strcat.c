@@ -21,7 +21,7 @@ char *my_strcat(char *dest, char const *src)
         res[i] = dest[i];
         i++;
     }
-    res[i] = '=';
+    res[i] = '/';
     i++;
     while (src[count] && src[count] != '\n') {
         res[i + count] = src[count];

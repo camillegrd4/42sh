@@ -37,7 +37,6 @@ char *clean_compare(char *compare)
     }
     change_string[j] = '\n';
     change_string[++j] = '\0';
-    printf("change_string-->[%s]\n", change_string);
     return change_string;
 }
 
@@ -61,8 +60,6 @@ char *change_string(char *str, char *line, int j, int i)
         x++;
     }
     compare = change_string_next(compare, line, x, i);
-    printf("compare--->[%s]\n", compare);
     compare = clean_compare(compare);
-    printf("compare_2--->[%s]\n", compare);
     return compare;
 }

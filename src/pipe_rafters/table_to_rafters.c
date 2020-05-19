@@ -8,13 +8,11 @@
 #include "my.h"
 
 const rafters_t lst[] = {
-    //{ ">>", &double_rafter},
     { "<<", &double_rev_rafter},
-    //{ ">", &echo_builtin },
-    //{ "<<", &cd_function },
+    { ">>", &double_rafter},
     { ">", &redirections_function },
     //{ "<", &setting_env },
-    //{ "|", &exec_first_arg},
+    { "|", &exec_first_arg},
     {"NULL"},
 };
 
@@ -55,12 +53,14 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
     while (line[i]) {
         if (line[i] == '|' && value == 0) {
             value = 1;
-            exec_first_arg(envp, line, shell, x);
+            return exec_first_arg(envp, line, shell, x);
         }
         if (check_separ(line, i) == 1) {
             list = find_rafters(line[i], shell);
-            if (!(list))
+            value = 1;
+            if (!(list)) {
                 return 0;
+            }
             else {
                 if ((value = list(envp, line, shell, x)) == 1)
                     return 1;
