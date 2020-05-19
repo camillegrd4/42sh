@@ -23,7 +23,7 @@ int check_input(shell_t *shell)
         my_putstr("Permission denied\n");
         return 1;
     }
-    return 0;
+    return 2;
 }
 
 void check_deleting(shell_t *shell)
@@ -50,7 +50,7 @@ static int make_redirect(pid_t pid, shell_t *shell, char **env, int *fd)
     close(newfd);
     if (exec_function(env, shell, pid) == 84)
         return 84;
-    return 0;
+    return 1;
 }
 
 int redirections_function(char **envp, char *line, shell_t *shell, int x)
@@ -76,6 +76,7 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x)
             return 1;
         check_deleting(shell);
         make_redirect(pid, shell, envp, fd);
+        return 1;
     }
     _exit(EXIT_SUCCESS);
 }

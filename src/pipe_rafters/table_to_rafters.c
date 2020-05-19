@@ -8,7 +8,7 @@
 #include "my.h"
 
 const rafters_t lst[] = {
-    //{ ">>", &double_rafter},
+    { ">>", &double_rafter},
     //{ "<<", &cd_function},
     //{ ">", &echo_builtin },
     //{ "<<", &cd_function },
@@ -57,8 +57,10 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
         }
         if (check_separ(line, i) == 1) {
             list = find_rafters(line[i], shell);
-            if (!(list))
+            value = 1;
+            if (!(list)) {
                 return 0;
+            }
             else {
                 if (list(envp, line, shell, x) == 1)
                     return 1;
