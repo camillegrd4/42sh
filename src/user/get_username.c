@@ -13,6 +13,6 @@ char *get_username()
 
     if (!username)
         return NULL;
-    else 
+    else
         return username;
 }

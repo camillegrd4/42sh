@@ -14,7 +14,7 @@ void prompt_user(shell_t *shell)
 
     getcwd(cwd, sizeof(cwd));
     if (shell->username && isatty(STDIN_FILENO) && shell->host && cwd)
-        printf("%s@%s || %s $>", shell->username, shell->host, cwd);
-    else 
+        printf("%s@%s || %s $> ", shell->username, shell->host, cwd);
+    else
         my_putstr("$>");
 }
