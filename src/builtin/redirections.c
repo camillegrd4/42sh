@@ -8,6 +8,24 @@
 #include <dirent.h>
 #include "my.h"
 
+int check_input(shell_t *shell)
+{
+    DIR* directory = opendir(shell->path_bis[1]);
+
+    if (directory != NULL) {
+        my_putstr(shell->path_bis[1]);
+		my_putstr(": Is a directory\n");
+        closedir(directory);
+        return 1;
+    }
+    if (errno == EACCES) {
+		my_putstr(shell->path_bis[1]);
+        my_putstr("Permission denied\n");
+        return 1;
+    }
+    return 0;
+}
+
 void check_deleting(shell_t *shell)
 {
     struct dirent *files;
@@ -54,6 +72,8 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x)
         my_putstr("Erreur pipe\n");
         return 1;
     } else if (pid == 0) {
+        if (check_input(shell) == 1)
+            return 1;
         check_deleting(shell);
         make_redirect(pid, shell, envp, fd);
     }
