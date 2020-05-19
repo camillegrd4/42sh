@@ -7,18 +7,6 @@
 
 #include "my.h"
 
-static int append_tofile(int *fd, FILE *newfd)
-{
-    char buffer[1];
-
-    printf("yo\n");
-    while (read(fd[1], buffer, 1) != 0) {
-        printf("%c\n", buffer[0]);
-        fwrite(buffer, 1, 1, newfd);
-    }
-    return 0;
-}
-
 static int make_redirect(pid_t pid, shell_t *shell, char **env)
 {
     int newfd = open(shell->path_bis[1], O_APPEND | O_RDWR| O_CREAT,
@@ -41,8 +29,6 @@ static int make_redirect(pid_t pid, shell_t *shell, char **env)
 int double_rafter(char **envp, char *line, shell_t *shell, int x)
 {
     pid_t pid;
-    int fd[2];
-    char **separ = malloc(sizeof(char) * (my_strlen(line) + 1));
 
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, ">");
