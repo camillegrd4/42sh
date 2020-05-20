@@ -74,11 +74,11 @@ cmd_t *parse_cmd(char *line)
         if (one_cmd[0] != '\0') {
             new_cmd = add_to_list(one_cmd, separator, new_cmd);
             separator = which_sep(line[i], line[i + 1], line[i - 1]);
-        }
-        free(one_cmd);
+        } if (one_cmd) free(one_cmd);
         i++;
-    }
-    if (strcmp(separator, ";") != 0 || too_much_sep == true)
+    } if (!new_cmd && too_much_sep == true) 
+        return add_to_list(NULL, "||", new_cmd);
+    if ((strcmp(separator, ";") != 0 || too_much_sep == true) && new_cmd)
         new_cmd->more_sep = true;
     my_rev_list(&new_cmd);
     return new_cmd;
