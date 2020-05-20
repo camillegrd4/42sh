@@ -69,6 +69,21 @@ int cd_home(shell_t *shell)
     return 0;
 }
 
+int cd_function_next(char **envp, shell_t *shell, int value, char *save)
+{
+    if (!envp || !shell || !save)
+        return 84;
+    if (cd_home(shell) == 1)
+        return 1;
+    if (my_strncmp(shell->array[1], "-", 1) == 0) {
+        if (cd_normal(shell, "-", value, save) == 1) {
+            shell->error = 1;
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int cd_function(char **envp, shell_t *shell)
 {
     static int value = 0;
@@ -80,14 +95,9 @@ int cd_function(char **envp, shell_t *shell)
     save_path = getcwd(buf, size);
     if (!shell || !shell->array[0])
         return 84;
-    if (cd_home(shell) == 1)
+    if (cd_function_next(envp, shell, value, save) == 1)
         return 1;
-    if (my_strncmp(shell->array[1], "-", 1) == 0) {
-        if (cd_normal(shell, "-", value, save) == 1) {
-            shell->error = 1;
-            return 1;
-        }
-    } else {
+    else {
         if (cd_normal(shell, shell->array[1], value, save) == 1) {
             return 1;
         }
