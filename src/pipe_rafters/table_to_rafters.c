@@ -8,11 +8,15 @@
 #include "my.h"
 
 const rafters_t lst[] = {
+    { ">>", &double_rafter },
+    { "<<", &double_rev_rafter },
+    { "|", &exec_first_arg },
+    {"NULL"},
+};
+
+const rafters2_t lst2[] = {
     { "<", &reverse_function },
-    { "<<", &double_rev_rafter},
-    { ">>", &double_rafter},
     { ">", &redirections_function },
-    { "|", &exec_first_arg},
     {"NULL"},
 };
 
@@ -22,10 +26,24 @@ list_t find_rafters(char str, shell_t *shell)
     int j = 0;
 
     while (&lst[i] != NULL) {
-        if (my_strcmp_char(lst[i].str, str) == 0) {
+        if (my_strcmp_char(lst[i].str, str) == 0)
             return (lst[i].list);
-        }
         if (lst[i].str == "NULL")
+            return 0;
+        i++;
+    }
+    return NULL;
+}
+
+list_t find_rafters2(char str, shell_t *shell)
+{
+    int i = 0;
+    int j = 0;
+
+    while (&lst2[i]!= NULL) {
+        if (my_strcmp_char(lst2[i].str, str) == 0)
+            return (lst2[i].list);
+        if (lst2[i].str == "NULL")
             return 0;
         i++;
     }
@@ -57,7 +75,12 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
             return exec_first_arg(envp, line, shell, x);
         }
         if (check_separ(line, i) == 1) {
-            list = find_rafters(line[i], shell);
+            if ((line[i] == '>' && line[i + 1] == '>') ||
+                (line[i] == '<' && line[i + 1] == '<'))
+                list = find_rafters(line[i], shell);
+            else if ((line[i] == '>' && line[i + 1] != '>') ||
+                (line[i] == '<' && line[i + 1] != '<'))
+                list = find_rafters2(line[i], shell);
             value = 1;
             if (!(list)) return 0;
             else {

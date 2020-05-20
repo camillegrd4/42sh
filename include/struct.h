@@ -71,4 +71,11 @@ typedef struct rafters {
 } rafters_t;
 
 extern const rafters_t lst[];
+
+typedef struct rafters2 {
+    const char *str;
+    list_t list;
+} rafters2_t;
+
+extern const rafters2_t lst2[];
 #endif /* !STRUCT_H */
