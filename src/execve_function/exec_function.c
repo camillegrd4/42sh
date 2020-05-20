@@ -18,8 +18,7 @@ int command_not_found(char **envp, shell_t *shell)
 int access_function(int i, char **envp, char *path, shell_t *shell)
 {
     errno == 0;
-    if (!shell || !envp)
-        return 84;
+    if (!shell || !envp) return 84;
     if (access(path, F_OK) == 0) {
         if (execve(path, shell->array, envp) == -1) {
             shell->error = 1;

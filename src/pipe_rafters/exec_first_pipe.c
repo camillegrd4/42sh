@@ -67,7 +67,7 @@ int is_multiple_pipes(char *line)
     }
     if (result > 1)
         return result;
-    else 
+    else
         return 0;
 }
 
@@ -77,11 +77,11 @@ char *create_new_line_without_old_args(char **buffer)
     char *temp = NULL;
     int i = 1;
 
-    printf("caca \n");
+    //printf("caca \n");
     while(buffer[i])
     {
         temp = my_strcat(buffer[i], buffer[i + 1]);
-        printf("BITE %s\n", temp);
+        //printf("BITE %s\n", temp);
         //result = my_strdup(buffer[i]);
         i++;
     }
@@ -95,8 +95,8 @@ int exec_first_arg(char **envp, char *line, shell_t *shell, int x)
     int turn = is_multiple_pipes(line);
     char *new_line = NULL;
 
-    printf("BITE PUTAIN x %d\n", x);
-    printf("turn %d\n", turn);
+    //printf("BITE PUTAIN x %d\n", x);
+    //printf("turn %d\n", turn);
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, "|");
     shell->path_bis = clean_string(shell->path_bis);
