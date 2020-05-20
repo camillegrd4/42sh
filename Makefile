@@ -31,6 +31,7 @@ PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/double_rafter.c 		\
 					src/pipe_rafters/redirections.c			\
 					src/pipe_rafters/double_rev_rafters.c 	\
+					src/pipe_rafters/redirections_verse.c 	\
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\
 					src/execve_function/check_function.c 	\

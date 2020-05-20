@@ -53,6 +53,7 @@ int double_rafter(char **, char *, shell_t *, int);
 int double_rev_rafter(char **, char *, shell_t *, int);
 int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x);
 int redirections_function(char **envp, char *line, shell_t *shell, int x);
+int reverse_function(char **envp, char *line, shell_t *shell, int x);
 int call_rafters(char *line, char **envp, shell_t *shell, int x);
 
 /*builtin*/
