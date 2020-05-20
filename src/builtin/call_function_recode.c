@@ -14,7 +14,6 @@ const recode_t tab[] = {
     { "cd", &cd_function },
     { "exit", &exit_function },
     {"unsetenv", &unsetenv_function },
-    //{"alias", &alias_function },
     {"NULL"},
 };
 

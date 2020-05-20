@@ -11,8 +11,8 @@ int my_pattern(shell_t *shell, char path)
 {
     flags flag_checker[] = {
     ['b'] = backslash_b,
-    ['n'] = backslash_n,
     ['c'] = backslash_c,
+    ['n'] = backslash_n,
     ['e'] = backslash_e,
     ['r'] = backslash_r,
     ['t'] = backslash_t,
@@ -48,6 +48,10 @@ int echo_builtin(char **envp, shell_t *shell)
             }
             if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'e') {
                 flags_e(shell);
+                return 2;
+            }
+            if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'E') {
+                flags_e_maj(shell);
                 return 2;
             }
             i++;

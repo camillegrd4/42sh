@@ -102,7 +102,9 @@ int calc_len(char *str);
 int check_input(shell_t *);
 char *get_alias_path(shell_t *shell);
 int unset_env(char **envp, shell_t *shell);
-
+int print_e_flags(shell_t *shell, int j);
+int flags_e_maj(shell_t *shell);
+int flags_e_maj(shell_t *shell);
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
 char **check_space_colon(char **array, int number, char **form);

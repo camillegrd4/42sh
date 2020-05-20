@@ -6,7 +6,6 @@
 */
 
 #include "my.h"
-#include <stdlib.h>
 
 int strlen_equal(char *str)
 {

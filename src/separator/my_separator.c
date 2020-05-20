@@ -47,6 +47,8 @@ int call_separator(char **envp, shell_t *shell, char *line, int x)
     if (line_value(line[0]) == 1) return 0;
     tmp_str = clean_str(line);
     cmd = parse_cmd(tmp_str);
+    if (!cmd)
+        return 2;
     if (check_invalid_command(cmd) == 2)
         return 2;
     tmp = cmd;

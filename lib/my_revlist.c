@@ -10,9 +10,12 @@
 void my_rev_list(cmd_t **begin)
 {
     cmd_t *tmp = 0;
-    cmd_t *elem = *begin;
+    cmd_t *elem;
     cmd_t *next;
 
+    if (!*begin)
+        return;
+    elem = *begin;
     while (elem->next) {
         next = elem->next;
         elem->next = tmp;

@@ -24,7 +24,7 @@ char **clean_string(char **tab)
     int third = 0;
     char **new = malloc(sizeof(char *) * (tab_len(tab) + 2));
 
-    if (!tab || ! new) return NULL;
+    if (!tab || !new) return NULL;
     while (tab[index]) {
         j = 0;
         third = 0;
