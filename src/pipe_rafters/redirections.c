@@ -67,8 +67,7 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x)
     } else if (pid > 0) {
         waitpid(pid, NULL, 0);
         return 2;
-    }
-    if (pipe(fd) == -1) {
+    } if (pipe(fd) == -1) {
         my_putstr("Erreur pipe\n");
         return 1;
     } else if (pid == 0) {
@@ -78,5 +77,4 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x)
         make_redirect(pid, shell, envp, fd);
         return 1;
     }
-    _exit(EXIT_SUCCESS);
 }
