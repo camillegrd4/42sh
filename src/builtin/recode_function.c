@@ -20,7 +20,7 @@ int unsetenv_function(char **envp, shell_t *shell)
 {
     if (!shell)
         return 84;
-    if (my_unsetenv(shell) == 1) {
+    if (unset_env(envp, shell) == 1) {
         return 1;
     }
     return 0;

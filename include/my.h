@@ -100,6 +100,7 @@ char *change_string(char *str, char *line, int j, int i);
 int calc_len(char *str);
 int check_input(shell_t *);
 char *get_alias_path(shell_t *shell);
+int unset_env(char **envp, shell_t *shell);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);

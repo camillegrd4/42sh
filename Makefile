@@ -7,6 +7,7 @@
 
 BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/cd_function.c 				\
+					src/builtin/unsetenv.c 					\
 					src/builtin/unsetenv_function.c 		\
 					src/builtin/change_env.c 				\
 					src/builtin/change_line.c 				\
