@@ -76,7 +76,7 @@ cmd_t *parse_cmd(char *line)
             separator = which_sep(line[i], line[i + 1], line[i - 1]);
         } if (one_cmd) free(one_cmd);
         i++;
-    } if (!new_cmd && too_much_sep == true) 
+    } if (!new_cmd && too_much_sep == true)
         return add_to_list(NULL, "||", new_cmd);
     if ((strcmp(separator, ";") != 0 || too_much_sep == true) && new_cmd)
         new_cmd->more_sep = true;
