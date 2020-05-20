@@ -51,7 +51,7 @@ char *compare_string(char *str, char *line)
 
 char *check_alias(char *line, shell_t *shell)
 {
-    FILE *fd = fopen(get_alias_path(shell), "a+");
+    FILE *fd = fopen(get_alias_path(shell), "w+");
     char str[TAILLE_MAX] = "";
     char *string = NULL;
 

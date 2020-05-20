@@ -50,9 +50,8 @@ int call_separator(char **envp, shell_t *shell, char *line, int x)
         separator = find_separator(tmp, shell);
         if (!(separator)) {
             return 0;
-        } else {
+        } else
             x = separator(envp, tmp->cmd, shell, x);
-        }
         tmp = tmp->next;
     }
     free_list(cmd);

@@ -18,7 +18,7 @@ char *get_input(int *fd, shell_t *shell)
         getline(&line, &n, stdin);
         if (strncmp(line, shell->path_bis[1],
             my_strlen(shell->path_bis[1])) == 0) {
-            fclose(file); 
+            fclose(file);
             return strcat(shell->path_bis[0], " tmp.txt");
         }
         fprintf(file, "%s", line);

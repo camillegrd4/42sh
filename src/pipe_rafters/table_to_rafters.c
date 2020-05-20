@@ -59,9 +59,7 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
         if (check_separ(line, i) == 1) {
             list = find_rafters(line[i], shell);
             value = 1;
-            if (!(list)) {
-                return 0;
-            }
+            if (!(list)) return 0;
             else {
                 if ((value = list(envp, line, shell, x)) == 1)
                     return 1;

@@ -48,19 +48,22 @@ int principal_function(char **envp, shell_t *shell)
     size_t n = 0;
     char *line = NULL;
     static int x = 0;
+    static int status = 0;
     int i = 0;
 
     while (1) {
         i = 0;
         if (isatty(STDIN_FILENO) == 1)
             prompt_user(shell);
-        if (x = getline(&line, &n, stdin) == -1) {
+        x = getline(&line, &n, stdin);
+        if (x == -1 && !isatty(0))
+            exit(status);
+        else if (x == -1 && isatty(0)) {
             free(shell);
             my_putstr("exit\n");
             exit(0);
-        }
-        line = check_alias(line, shell);
-        x = call_separator(envp, shell, line, x);
+        } else
+            x = call_separator(envp, shell, line, x);
     }
     return 0;
 }

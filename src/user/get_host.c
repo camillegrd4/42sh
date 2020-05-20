@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-char *get_host()
+char *get_host(void)
 {
     char hostname[1024];
     char *result = NULL;
