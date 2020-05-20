@@ -78,8 +78,7 @@ char *create_new_line_without_old_args(char **buffer)
     int i = 1;
 
     //printf("caca \n");
-    while(buffer[i])
-    {
+    while(buffer[i]) {
         temp = my_strcat(buffer[i], buffer[i + 1]);
         //printf("BITE %s\n", temp);
         //result = my_strdup(buffer[i]);

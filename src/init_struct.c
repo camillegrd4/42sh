@@ -7,6 +7,20 @@
 
 #include "my.h"
 
+shell_t *init_struct_minishell_next(char **envp, shell_t *shell)
+{
+    if (!envp)
+        return NULL;
+    shell->unset = NULL;
+    shell->pos = 0;
+    shell->echo_path = NULL;
+    shell->command_done = 0;
+    shell->username = get_username();
+    shell->host = get_host();
+    shell->comma = malloc(sizeof(comma_t));
+    return shell;
+}
+
 shell_t *init_struct_minishell(char **envp)
 {
     int i = 0;
@@ -27,12 +41,7 @@ shell_t *init_struct_minishell(char **envp)
     shell->name = NULL;
     shell->new_env = NULL;
     shell->line = 0;
-    shell->unset = NULL;
-    shell->pos = 0;
-    shell->echo_path = NULL;
-    shell->command_done = 0;
-    shell->username = get_username();
-    shell->host = get_host();
-    shell->comma = malloc(sizeof(comma_t));
+    if (!(init_struct_minishell_next(envp, shell)))
+        return NULL;
     return shell;
 }

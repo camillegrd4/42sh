@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-char *get_username()
+char *get_username(void)
 {
     char *username = getenv("USER");
 

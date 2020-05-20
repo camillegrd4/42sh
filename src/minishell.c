@@ -62,10 +62,8 @@ int principal_function(char **envp, shell_t *shell)
             free(shell);
             my_putstr("exit\n");
             exit(0);
-        } else {
-            //line = check_alias(line, shell);
+        } else
             x = call_separator(envp, shell, line, x);
-        }
     }
     return 0;
 }
