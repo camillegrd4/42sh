@@ -71,6 +71,7 @@ LIB =				lib/my_putchar.c 					\
 					lib/clean_string.c 					\
 					lib/tab_len.c 						\
 					lib/my_strcmp.c 					\
+					lib/clean_str.c 					\
 
 SEPARATOR = 		src/separator/do_double_and.c 		\
 					src/separator/do_double_or.c 		\
