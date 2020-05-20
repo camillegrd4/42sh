@@ -7,34 +7,6 @@
 
 #include "my.h"
 
-int is_double_and(char *line)
-{
-    int i = 0;
-
-    while (line[i]) {
-        if (line[i] == '&' && line[i + 1] == '&' && line[i + 2] == '&') {
-            my_putstr("Invalid null command.\n");
-            return 2;
-        }
-        if (line[i] == '&' && line[i + 1] == '&')
-            return 1;
-        i++;
-    }
-    return 0;
-}
-
-int check_and(char **separ, int i)
-{
-    if (separ[1] && separ[1][0] == '\n') {
-        my_putstr("Invalid null command.\n");
-        return 2;
-    }
-    if (separ[0][0] == '\0' || separ[0][0] == '\n') {
-        return 1;
-    }
-    return i;
-}
-
 int do_double_and(char **envp, char *line, shell_t *shell, int x)
 {
     char **separ = NULL;

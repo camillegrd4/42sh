@@ -72,6 +72,7 @@ LIB =				lib/my_putchar.c 					\
 					lib/clean_string.c 					\
 					lib/tab_len.c 						\
 					lib/my_strcmp.c 					\
+					lib/clean_str.c 					\
 
 SEPARATOR = 		src/separator/do_double_and.c 		\
 					src/separator/do_double_or.c 		\
@@ -79,6 +80,7 @@ SEPARATOR = 		src/separator/do_double_and.c 		\
 					src/separator/parse_cmd.c 			\
 					src/separator/free_list.c 			\
 					src/separator/is_not_separator.c 	\
+					src/separator/check_invalid_comand.c 	\
 
 PROMPT = 			src/user/prompt_user.c 				\
 					src/user/get_username.c 			\

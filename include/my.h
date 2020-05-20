@@ -136,6 +136,7 @@ int my_strcmp(char const *s1, char const *s2);
 void my_rev_list(cmd_t **);
 void free_list(cmd_t *);
 int my_strcmp_char(char const *s1, char const s2);
+char *clean_str(char *);
 
 /*separator*/
 cmd_t *parse_cmd(char *line);
@@ -151,6 +152,8 @@ char x, char path);
 int is_or(char **envp, char *line, shell_t *shell, int x);
 int check_time(char **envp, char *line, shell_t *shell, int x);
 int is_not_separator(char, char, char);
+int is_pipe(char, char, char);
+int check_invalid_command(cmd_t *);
 
 /*prompt user*/
 void prompt_user(shell_t *shell);
