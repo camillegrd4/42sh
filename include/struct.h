@@ -41,6 +41,7 @@ typedef struct comma_s {
 typedef struct cmd_s {
     char *separator;
     char *cmd;
+    bool more_sep;
     struct cmd_s *next;
 }cmd_t;
 

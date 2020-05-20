@@ -26,6 +26,7 @@ cmd_t *add_to_list(char *cmd, char *separator, cmd_t *cmd_list)
         return NULL;
     tmp->separator = separator;
     tmp->cmd = my_strdup(cmd);
+    tmp->more_sep = false;
     tmp->next = cmd_list;
     return tmp;
 }
@@ -64,9 +65,12 @@ cmd_t *parse_cmd(char *line)
     int i = 0;
     char *one_cmd = NULL;
     char *separator = ";";
+    bool too_much_sep = false;
 
     while (line[i]) {
         one_cmd = return_one_cmd(line, &i);
+        if (is_pipe(line[i], line[i + 1], line[i - 1]) &&
+            (!one_cmd || one_cmd[0] == '\0')) too_much_sep = true;
         if (one_cmd[0] != '\0') {
             new_cmd = add_to_list(one_cmd, separator, new_cmd);
             separator = which_sep(line[i], line[i + 1], line[i - 1]);
@@ -74,6 +78,8 @@ cmd_t *parse_cmd(char *line)
         free(one_cmd);
         i++;
     }
+    if (strcmp(separator, ";") != 0 || too_much_sep == true)
+        new_cmd->more_sep = true;
     my_rev_list(&new_cmd);
     return new_cmd;
 }

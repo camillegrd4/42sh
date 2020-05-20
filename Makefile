@@ -78,6 +78,7 @@ SEPARATOR = 		src/separator/do_double_and.c 		\
 					src/separator/parse_cmd.c 			\
 					src/separator/free_list.c 			\
 					src/separator/is_not_separator.c 	\
+					src/separator/check_invalid_comand.c 	\
 
 PROMPT = 			src/user/prompt_user.c 				\
 					src/user/get_username.c 			\
