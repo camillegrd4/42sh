@@ -61,6 +61,11 @@ typedef struct separ {
     separator_t separator;
 } separ_t;
 
+typedef struct piping_s {
+    char **tab;
+    struct piping_s *next;
+} piping_t;
+
 extern const separ_t map[];
 
 typedef int (*list_t)(char **envp, char *line, shell_t *shell, int x);

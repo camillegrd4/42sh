@@ -56,6 +56,9 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x);
 int reverse_function(char **envp, char *line, shell_t *shell, int x);
 int call_rafters(char *line, char **envp, shell_t *shell, int x);
 int check_error(shell_t *shell);
+static int exec_father(pid_t pid, shell_t *shell, char **envp, int fd[2]);
+static int exec_child(shell_t *shell, pid_t pid, char **envp, int *fd);
+static int exec_arg(pid_t pid, shell_t *shell, char **envp, int *fd);
 
 /*builtin*/
 int setting_env(char **envp, shell_t *shell);
