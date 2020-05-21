@@ -23,10 +23,6 @@ int check_if_pipe(shell_t *shell)
 
 int check_error(shell_t *shell)
 {
-    if (tab_len(shell->path_bis) == 1) {
-        my_putstr("Invalid null command.\n");
-        return 84;
-    }
     return 0;
 }
 
