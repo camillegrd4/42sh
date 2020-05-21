@@ -156,8 +156,8 @@ int return_function(char **envp, char *line, shell_t *shell, int x);
 int my_pattern_separator(char **envp, char *line, shell_t *shell,
 char x, char path);
 int is_or(char **envp, char *line, shell_t *shell, int x);
-int check_time(char **envp, char *line, shell_t *shell, int x);
-int is_not_separator(char *line, int i);
+int check_time(char **env, char, char, shell_t *shell, int x);
+int is_not_separator(char current, char plus_one, char minus_one);
 int is_pipe(char, char, char);
 int check_invalid_command(cmd_t *);
 
