@@ -26,10 +26,6 @@ int check_error(shell_t *shell)
     if (tab_len(shell->path_bis) == 1) {
         my_putstr("Invalid null command.\n");
         return 84;
-    } else if (check_if_pipe(shell) == 84) {
-        my_putstr("Ambiguous output redirect.");
-        my_putchar('\n');
-        return 84;
     }
     return 0;
 }
