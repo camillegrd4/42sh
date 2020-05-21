@@ -29,7 +29,6 @@ char *add_line_vertical(shell_t *shell)
     int i = 0;
     int j = 0;
     int value = count_char(shell->echo_path);
-
     char *new = malloc(sizeof(char) *
                 (my_strlen(shell->echo_path) + (value) + 1));
 
@@ -44,9 +43,7 @@ char *add_line_vertical(shell_t *shell)
                 value--;
             }
         }
-        new[j] = shell->echo_path[i];
-        j++;
-        i++;
+        new[j++] = shell->echo_path[i++];
     }
     new[j] = '\0';
     return new;
