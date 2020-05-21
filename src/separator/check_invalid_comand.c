@@ -9,10 +9,13 @@
 
 int check_invalid_command(cmd_t *cmd)
 {
-    cmd_t *tmp = cmd;
+    cmd_t *tmp;
 
+    if (!cmd)
+        return 2;
+    tmp = cmd;
     while (tmp) {
-        if (tmp->more_sep == true) {
+        if (tmp->more_sep == true || !tmp->cmd) {
             my_putstr("Invalid null command.\n");
             return 2;
         }

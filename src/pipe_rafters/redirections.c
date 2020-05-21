@@ -61,6 +61,8 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x)
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, ">");
     shell->path_bis = clean_string(shell->path_bis);
+    if (check_error(shell) == 84)
+        return 84;
     if ((pid = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;

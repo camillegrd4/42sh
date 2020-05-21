@@ -50,7 +50,7 @@ list_t find_rafters2(char str, shell_t *shell)
     return NULL;
 }
 
-int check_separ(char *line, int i)
+int check_separ(char *line, int i, int *value)
 {
     if ((line[i] == '|' && line[i + 1] != '|' && line[i - 1] != '|')
     || (line[i] == '>' && line[i + 1] == '>' && line[i - 1] != '>'
@@ -60,6 +60,12 @@ int check_separ(char *line, int i)
     && line[i + 2] != '<')
     || (line[i] == '<' && line[i + 1] != '<' && line[i - 1] != '<'))
         return 1;
+    else if ((line[i] == '>' && line[i + 1] == '>' && line[i + 2] == '>')
+    || (line[i] == '<' && line[i + 1] == '<' && line[i + 2] == '<')) {
+        my_putstr("Missing name for redirect.");
+        my_putchar('\n');
+        *value = 1;
+    }
     return 0;
 }
 
@@ -74,7 +80,7 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
             value = 1;
             return exec_first_arg(envp, line, shell, x);
         }
-        if (check_separ(line, i) == 1) {
+        if (check_separ(line, i, &value) == 1) {
             if ((line[i] == '>' && line[i + 1] == '>') ||
                 (line[i] == '<' && line[i + 1] == '<'))
                 list = find_rafters(line[i], shell);
@@ -83,12 +89,8 @@ int call_rafters(char *line, char **envp, shell_t *shell, int x)
                 list = find_rafters2(line[i], shell);
             value = 1;
             if (!(list)) return 0;
-            else {
-                if ((value = list(envp, line, shell, x)) == 1)
-                    return 1;
-            }
-        }
-        i++;
-    }
-    return value;
+            else
+                if ((value = list(envp, line, shell, x)) == 1) return 1;
+        } i++;
+    } return value;
 }

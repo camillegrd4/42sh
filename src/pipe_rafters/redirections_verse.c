@@ -8,6 +8,32 @@
 #include <dirent.h>
 #include "my.h"
 
+int check_if_pipe(shell_t *shell)
+{
+    int i = 0;
+
+    while (shell->path_bis[1][i]) {
+        if (shell->path_bis[1][i] == '|') {
+            return 84;
+        }
+        i++;
+    }
+    return 0;
+}
+
+int check_error(shell_t *shell)
+{
+    if (tab_len(shell->path_bis) == 1) {
+        my_putstr("Invalid null command.\n");
+        return 84;
+    } else if (check_if_pipe(shell) == 84) {
+        my_putstr("Ambiguous output redirect.");
+        my_putchar('\n');
+        return 84;
+    }
+    return 0;
+}
+
 static int make_reverse(pid_t pid, shell_t *shell, char **env, int *fd)
 {
     int newfd = open(shell->path_bis[1], O_CREAT | O_APPEND | O_RDWR,
@@ -25,11 +51,14 @@ static int make_reverse(pid_t pid, shell_t *shell, char **env, int *fd)
 int reverse_function(char **envp, char *line, shell_t *shell, int x)
 {
     pid_t pid;
+    int i = 0;
     int fd[2];
 
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, "<");
     shell->path_bis = clean_string(shell->path_bis);
+    if (check_error(shell) == 84)
+        return 1;
     if ((pid = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;
