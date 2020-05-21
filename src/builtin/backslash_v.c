@@ -30,7 +30,7 @@ char *add_line_vertical(shell_t *shell)
     int j = 0;
     int value = count_char(shell->echo_path);
     char *new = malloc(sizeof(char) *
-                (my_strlen(shell->echo_path) + (value) + 1));
+            (my_strlen(shell->echo_path) + (value) + 1));
 
     while (shell->echo_path[i] != '\0') {
         if (shell->echo_path[i] == '\\' &&

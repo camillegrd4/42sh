@@ -21,11 +21,6 @@ int check_if_pipe(shell_t *shell)
     return 0;
 }
 
-int check_error(shell_t *shell)
-{
-    return 0;
-}
-
 static int make_reverse(pid_t pid, shell_t *shell, char **env, int *fd)
 {
     int newfd = open(shell->path_bis[1], O_CREAT | O_APPEND | O_RDWR,
@@ -49,8 +44,6 @@ int reverse_function(char **envp, char *line, shell_t *shell, int x)
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, "<");
     shell->path_bis = clean_string(shell->path_bis);
-    if (check_error(shell) == 84)
-        return 1;
     if ((pid = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;
@@ -66,4 +59,5 @@ int reverse_function(char **envp, char *line, shell_t *shell, int x)
         make_reverse(pid, shell, envp, fd);
         return 1;
     }
+    return 0;
 }

@@ -36,6 +36,7 @@ int backslash_r(shell_t *shell)
 {
     shell->echo_path = remove_all_before(shell->echo_path);
     shell->value = 1;
+    return 0;
 }
 
 char *remove_caract(char *str)
@@ -60,4 +61,5 @@ int backslash_e(shell_t *shell)
 {
     shell->echo_path = remove_caract(shell->echo_path);
     shell->value = 1;
+    return 0;
 }

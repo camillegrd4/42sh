@@ -13,8 +13,8 @@ const recode_t tab[] = {
     { "env", &print_env },
     { "cd", &cd_function },
     { "exit", &exit_function },
-    {"unsetenv", &unsetenv_function },
-    {"NULL"},
+    { "unsetenv", &unsetenv_function },
+    { "NULL" },
 };
 
 builtin_t find(char *key, shell_t *shell)

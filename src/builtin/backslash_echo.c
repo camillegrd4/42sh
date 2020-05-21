@@ -14,8 +14,7 @@ char *stop_caract(shell_t *shell)
     int j = 0;
 
     while (shell->echo_path[i] != '\0') {
-        if (shell->echo_path[i] == '\\' &&
-        shell->echo_path[i + 1] == 'c') {
+        if (shell->echo_path[i] == '\\' && shell->echo_path[i + 1] == 'c') {
             return new;
         }
         new[j] = shell->echo_path[i];

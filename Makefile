@@ -8,7 +8,6 @@
 BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/cd_function.c 				\
 					src/builtin/unsetenv.c 					\
-					src/builtin/unsetenv_function.c 		\
 					src/builtin/change_env.c 				\
 					src/builtin/change_line.c 				\
 					src/builtin/env_function.c 				\
@@ -23,10 +22,9 @@ BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/backslash_t.c 				\
 					src/builtin/other_setenv.c				\
 					src/builtin/comma_function.c 			\
-					src/builtin/alias_function.c 			\
-					src/builtin/add_alias.c 	 			\
 					src/builtin/change_string.c	 			\
 					src/builtin/flag_e_maj.c 				\
+					src/builtin/calc_len.c 					\
 
 PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/exec_first_pipe.c 		\
@@ -35,29 +33,14 @@ PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/redirections.c			\
 					src/pipe_rafters/double_rev_rafters.c 	\
 					src/pipe_rafters/redirections_verse.c 	\
-					src/pipe_rafters/exec_pipe.c 	\
+					src/pipe_rafters/linked_list_pipe.c		\
+					src/pipe_rafters/check_separator.c		\
+					src/pipe_rafters/call_rafters.c 		\
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\
 					src/execve_function/check_function.c 	\
 					src/execve_function/find_path.c 		\
 					src/execve_function/exec_function.c 	\
-
-LIB =				lib/my_putchar.c 						\
-					lib/my_putstr.c 						\
-					lib/my_strlen.c 						\
-					lib/my_str_to_world_array.c 			\
-					lib/my_strcat.c 						\
-					lib/my_strncmp.c 						\
-					lib/my_revlist.c 						\
-					lib/my_str_to_world_array_pipe.c 		\
-					lib/my_strncmp_next.c 					\
-					lib/my_strdup.c							\
-					lib/my_strcat_two.c 					\
-					lib/my_str_to_world_array_comma.c 		\
-					lib/my_str_to_wordtab.c 				\
-					lib/clean_string.c 						\
-					lib/tab_len.c 							\
-					lib/my_strcmp.c 						\
 
 LIB =				lib/my_putchar.c 					\
 					lib/my_putstr.c 					\
@@ -77,12 +60,12 @@ LIB =				lib/my_putchar.c 					\
 					lib/my_strcmp.c 					\
 					lib/clean_str.c 					\
 
-SEPARATOR = 		src/separator/do_double_and.c 		\
-					src/separator/do_double_or.c 		\
-					src/separator/my_separator.c 		\
-					src/separator/parse_cmd.c 			\
-					src/separator/free_list.c 			\
-					src/separator/is_not_separator.c 	\
+SEPARATOR = 		src/separator/do_double_and.c 			\
+					src/separator/do_double_or.c 			\
+					src/separator/my_separator.c 			\
+					src/separator/parse_cmd.c 				\
+					src/separator/free_list.c 				\
+					src/separator/is_not_separator.c 		\
 					src/separator/check_invalid_comand.c 	\
 
 PROMPT = 			src/user/prompt_user.c 				\

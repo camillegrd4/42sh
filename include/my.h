@@ -56,6 +56,9 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x);
 int reverse_function(char **envp, char *line, shell_t *shell, int x);
 int call_rafters(char *line, char **envp, shell_t *shell, int x);
 int check_error(shell_t *shell);
+list_t find_rafters2(char str, shell_t *shell);
+list_t find_rafters(char str, shell_t *shell);
+piping_t *get_path(char **tab);
 static int exec_father(pid_t pid, shell_t *shell, char **envp, int fd[2]);
 static int exec_child(shell_t *shell, pid_t pid, char **envp, int *fd);
 static int exec_arg(pid_t pid, shell_t *shell, char **envp, int *fd);
@@ -109,6 +112,7 @@ int print_e_flags(shell_t *shell, int j);
 int flags_e_maj(shell_t *shell);
 int flags_e_maj(shell_t *shell);
 int backslash_v_f(shell_t *shell);
+int check_separ(char *line, int i, int *value);
 int is_end(char c);
 
 /*lib*/
@@ -146,6 +150,7 @@ void my_rev_list(cmd_t **);
 void free_list(cmd_t *);
 int my_strcmp_char(char const *s1, char const s2);
 char *clean_str(char *);
+int check_sep_function(list_t list, char *line, shell_t *shell, int i);
 
 /*separator*/
 cmd_t *parse_cmd(char *line);

@@ -53,6 +53,15 @@ static int make_redirect(pid_t pid, shell_t *shell, char **env, int *fd)
     return 1;
 }
 
+int checking_pid(pid_t pid, shell_t *shell, int *fd, char **envp)
+{
+    if (check_input(shell) == 1)
+        return 1;
+    check_deleting(shell);
+    make_redirect(pid, shell, envp, fd);
+    return 1;
+}
+
 int redirections_function(char **envp, char *line, shell_t *shell, int x)
 {
     pid_t pid;
@@ -61,8 +70,6 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x)
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, ">");
     shell->path_bis = clean_string(shell->path_bis);
-    if (check_error(shell) == 84)
-        return 84;
     if ((pid = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;
@@ -73,10 +80,6 @@ int redirections_function(char **envp, char *line, shell_t *shell, int x)
         my_putstr("Erreur pipe\n");
         return 1;
     } else if (pid == 0) {
-        if (check_input(shell) == 1)
-            return 1;
-        check_deleting(shell);
-        make_redirect(pid, shell, envp, fd);
-        return 1;
+        return checking_pid(pid, shell, fd, envp);
     }
 }

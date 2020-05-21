@@ -14,8 +14,7 @@ char *add_tab(shell_t *shell)
     int j = 0;
 
     while (shell->echo_path[i] != '\0') {
-        if (shell->echo_path[i] == '\\' &&
-        shell->echo_path[i + 1] == 't') {
+        if (shell->echo_path[i] == '\\' && shell->echo_path[i + 1] == 't') {
             new[j] = '\t';
             i += 2;
             j++;
