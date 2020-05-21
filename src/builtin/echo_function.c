@@ -16,6 +16,8 @@ int my_pattern(shell_t *shell, char path)
     ['e'] = backslash_e,
     ['r'] = backslash_r,
     ['t'] = backslash_t,
+    ['v'] = backslash_v_f,
+    ['f'] = backslash_v_f,
     };
     flag_checker[path](shell);
     return 0;
@@ -24,12 +26,29 @@ int my_pattern(shell_t *shell, char path)
 int my_main_flags(char str)
 {
     int i = 0;
-    char *flags = "bncert";
+    char *flags = "bncertvf";
 
     while (flags[i] != '\0') {
         if (str == flags[i])
             return 1;
         i++;
+    }
+    return 0;
+}
+
+int call_flags_echo(shell_t *shell, int i)
+{
+    if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'n') {
+        flags_n(shell);
+        return 2;
+    }
+    if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'e') {
+        flags_e(shell);
+        return 2;
+    }
+    if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'E') {
+        flags_e_maj(shell);
+        return 2;
     }
     return 0;
 }
@@ -42,18 +61,8 @@ int echo_builtin(char **envp, shell_t *shell)
 
     if (shell->echo_path) {
         while (shell->echo_path[i] != '\0') {
-            if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'n') {
-                flags_n(shell);
+            if (call_flags_echo(shell, i) == 2)
                 return 2;
-            }
-            if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'e') {
-                flags_e(shell);
-                return 2;
-            }
-            if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'E') {
-                flags_e_maj(shell);
-                return 2;
-            }
             i++;
         }
     }

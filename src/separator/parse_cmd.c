@@ -46,11 +46,11 @@ int is_end(char c)
 
 char *return_one_cmd(char *line, int *i)
 {
-    char *new = calloc(sizeof(char) * 15, sizeof(char));
+    char *new = calloc(sizeof(char) * 1000, sizeof(char));
     int j = 0;
 
-    while (is_not_separator(line[*i], line[*i + 1], line[*i - 1]) &&
-            is_end(line[*i]) != 1) {
+    while (is_end(line[*i]) != 1 &&
+            is_not_separator(line, *i)) {
         new[j] = line[*i];
         j++;
         (*i)++;

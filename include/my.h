@@ -108,6 +108,9 @@ int unset_env(char **envp, shell_t *shell);
 int print_e_flags(shell_t *shell, int j);
 int flags_e_maj(shell_t *shell);
 int flags_e_maj(shell_t *shell);
+int backslash_v_f(shell_t *shell);
+int is_end(char c);
+
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
 char **check_space_colon(char **array, int number, char **form);
@@ -157,7 +160,7 @@ int my_pattern_separator(char **envp, char *line, shell_t *shell,
 char x, char path);
 int is_or(char **envp, char *line, shell_t *shell, int x);
 int check_time(char **envp, char *line, shell_t *shell, int x);
-int is_not_separator(char, char, char);
+int is_not_separator(char *line, int i);
 int is_pipe(char, char, char);
 int check_invalid_command(cmd_t *);
 

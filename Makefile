@@ -15,6 +15,7 @@ BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/recode_function.c 			\
 					src/builtin/echo_function.c 			\
 					src/builtin/backslash_echo.c 			\
+					src/builtin/backslash_v.c 				\
 					src/builtin/echo_normal.c 				\
 					src/builtin/flags_n.c 					\
 					src/builtin/flags_e.c 					\
