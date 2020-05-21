@@ -50,7 +50,7 @@ char *return_one_cmd(char *line, int *i)
     int j = 0;
 
     while (is_end(line[*i]) != 1 &&
-            is_not_separator(line, *i)) {
+            is_not_separator(line[*i], line[*i + 1], line[*i - 1])) {
         new[j] = line[*i];
         j++;
         (*i)++;
