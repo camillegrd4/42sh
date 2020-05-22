@@ -168,6 +168,7 @@ int is_or(char **envp, char *line, shell_t *shell, int x);
 int check_time(char **env, char, char, shell_t *shell, int x);
 int is_not_separator(char current, char plus_one, char minus_one);
 int is_pipe(char, char, char);
+char *which_sep(char current, char plus_one, char minus_one);
 int check_invalid_command(cmd_t *);
 int pipe_loop_ext(piping_t *piping, shell_t *shell, char **envp, pid_t pid);
 int set_fd(piping_t *piping);

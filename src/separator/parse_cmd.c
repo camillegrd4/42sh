@@ -7,17 +7,6 @@
 
 #include "my.h"
 
-char *which_sep(char current, char plus_one, char minus_one)
-{
-    if (current == ';')
-        return ";";
-    if (current == '|' && (plus_one == '|' || minus_one == '|'))
-        return "||";
-    if (current == '&' && (plus_one == '&' || minus_one == '&'))
-        return "&&";
-    return ";";
-}
-
 cmd_t *add_to_list(char *cmd, char *separator, cmd_t *cmd_list)
 {
     cmd_t *tmp = malloc(sizeof(cmd_t));
