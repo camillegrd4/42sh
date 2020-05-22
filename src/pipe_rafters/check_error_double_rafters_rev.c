@@ -22,13 +22,29 @@ int missing_command(int number_arg, int number_rafters)
     return 0;
 }
 
+int calc_number_char(char **str)
+{
+    int i = 0;
+
+    while (str[i]) {
+        i++;
+    }
+    return i;
+}
+
 int check_arg_double_rev_rafters(char **check)
 {
     int i = 0;
+    int arg = calc_number_char(check) - 1;
+    int caract = my_strlen(check[i]);
 
     while (check[i]) {
         if (i == 0 && my_strncmp(check[i], "<<", 2) == 0 && check[i + 1]) {
             printf("Invalid null command.\n");
+            return 1;
+        } else if (my_strncmp(check[i], "cat", 3) == 0) {
+            printf("%s", check[arg]);
+            printf(": Command not found.\n");
             return 1;
         }
         i++;
