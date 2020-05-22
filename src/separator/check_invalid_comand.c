@@ -15,7 +15,8 @@ int check_invalid_command(cmd_t *cmd)
         return 2;
     tmp = cmd;
     while (tmp) {
-        if (tmp->more_sep == true || !tmp->cmd) {
+        if (tmp->more_sep == true || !tmp->cmd ||
+        my_strcmp(tmp->cmd, " ") == 0 || my_strcmp(tmp->cmd, "\t") == 0) {
             my_putstr("Invalid null command.\n");
             return 2;
         }
