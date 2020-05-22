@@ -9,7 +9,8 @@
 
 int check_space_string(int j, char **tab, int index)
 {
-    while (tab[index][j] == ' ' && tab[index][j + 1] == ' ')
+    while ((tab[index][j] == ' ' && tab[index][j + 1] == ' ') ||
+            tab[index][j] == '\t')
         j++;
     if ((j == 0 || j == my_strlen(tab[index]) - 1)
         && tab[index][j] == ' ')
