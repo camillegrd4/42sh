@@ -30,7 +30,7 @@ void prompt_user(shell_t *shell)
     char *folder = get_current_folder();
 
     if (folder)
-        printf("%s $>", folder);
-    else 
-        my_putstr("$>");
+        printf("%s $> ", folder);
+    else
+        my_putstr("$> ");
 }
