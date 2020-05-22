@@ -66,8 +66,7 @@ int cd_home(shell_t *shell, char **envp)
                 return 1;
             }
         }
-    }
-    return 0;
+    } return 0;
 }
 
 int cd_function_next(char **envp, shell_t *shell, int value, char *save)
