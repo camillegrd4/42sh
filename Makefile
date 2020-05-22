@@ -27,17 +27,21 @@ BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/calc_len.c 					\
 					src/builtin/get_env_line.c 				\
 
-PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
-					src/pipe_rafters/exec_first_pipe.c 		\
-					src/pipe_rafters/table_to_rafters.c 	\
-					src/pipe_rafters/double_rafter.c 		\
-					src/pipe_rafters/redirections.c			\
-					src/pipe_rafters/double_rev_rafters.c 	\
-					src/pipe_rafters/redirections_verse.c 	\
-					src/pipe_rafters/linked_list_pipe.c		\
-					src/pipe_rafters/check_separator.c		\
-					src/pipe_rafters/fd.c					\
-					src/pipe_rafters/call_rafters.c 		\
+PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 					\
+					src/pipe_rafters/exec_first_pipe.c 					\
+					src/pipe_rafters/table_to_rafters.c 				\
+					src/pipe_rafters/double_rafter.c 					\
+					src/pipe_rafters/redirections.c						\
+					src/pipe_rafters/double_rev_rafters.c 				\
+					src/pipe_rafters/redirections_verse.c 				\
+					src/pipe_rafters/linked_list_pipe.c					\
+					src/pipe_rafters/check_separator.c					\
+					src/pipe_rafters/fd.c								\
+					src/pipe_rafters/call_rafters.c 					\
+					src/pipe_rafters/check_error_double_rafters_rev.c 	\
+					src/pipe_rafters/check_error_double_rafters.c 		\
+					src/pipe_rafters/check_error_simple_rafters.c 		\
+					src/pipe_rafters/check_error_simple_rev_rafters.c 	\
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\
 					src/execve_function/check_function.c 	\

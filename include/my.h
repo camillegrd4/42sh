@@ -155,6 +155,11 @@ char *clean_str(char *);
 int check_sep_function(list_t list, char *line, shell_t *shell, int i);
 int my_strncmp_to_get_line(char *s1, char *s2, int n);
 builtin_t find_recode_function(char *key, shell_t *shell);
+int check_line_double_rev_rafters(char *line);
+int check_line_double_rafters(char *line);
+int missing_command(int number_arg, int number_rafters);
+int check_line_simple_rafters(char *line);
+int check_line_simple_rev_rafters(char *line);
 
 /*separator*/
 cmd_t *parse_cmd(char *line);
