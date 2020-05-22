@@ -33,6 +33,7 @@ int execve_function(char **envp, shell_t *shell);
 int access_function(int i, char **envp, char *path, shell_t *shell);
 int exec_binary(shell_t *shell, char **envp);
 int exec_function_system(shell_t *shell, char **envp, int i);
+int print_n_flags_backslash_n(shell_t *shell, int i);
 
 
 /*comma_pipe*/
