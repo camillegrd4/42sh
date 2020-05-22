@@ -11,7 +11,6 @@ int check_pipes(char *cmd)
 {
     char *temp = clean_str(cmd);
 
-    printf("%s\n", temp);
     if (!strcmp(temp, "|") || !strcmp(temp, " |") || !strcmp(temp, "| "))
         return 1;
     return 0;
