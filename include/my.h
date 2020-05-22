@@ -154,6 +154,7 @@ int my_strcmp_char(char const *s1, char const s2);
 char *clean_str(char *);
 int check_sep_function(list_t list, char *line, shell_t *shell, int i);
 int my_strncmp_to_get_line(char *s1, char *s2, int n);
+builtin_t find_recode_function(char *key, shell_t *shell);
 
 /*separator*/
 cmd_t *parse_cmd(char *line);

@@ -9,11 +9,19 @@
 
 int pipe_loop_ext(piping_t *piping, shell_t *shell, char **envp, pid_t pid)
 {
+    int x = 0;
+    int stock_stdin = dup(0);
+    int stock_stdout = dup(1);
+
     dup2(piping->fd[0], 0);
     dup2(piping->fd[1], 1);
-    if (my_function(shell, envp) == 84)
-        return 84;
-    exit(EXIT_FAILURE);
+    x = my_function(shell, envp);
+    dup2(stock_stdin, 0);
+    dup2(stock_stdout, 1);
+    if (pid != -1)
+        exit((x != 0) ? x : 0);
+    if (x != 0)
+        return x;
     return 0;
 }
 
