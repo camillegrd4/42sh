@@ -59,6 +59,16 @@ char *return_one_cmd(char *line, int *i)
     return new;
 }
 
+cmd_t *final_check(cmd_t *new_cmd, char *separator, bool too_much_sep)
+{
+    if (!new_cmd && too_much_sep == true)
+        return add_to_list(NULL, "||", new_cmd);
+    if ((strcmp(separator, ";") != 0 || too_much_sep == true) && new_cmd)
+        new_cmd->more_sep = true;
+    my_rev_list(&new_cmd);
+    return new_cmd;
+}
+
 cmd_t *parse_cmd(char *line)
 {
     cmd_t *new_cmd = NULL;
@@ -66,20 +76,19 @@ cmd_t *parse_cmd(char *line)
     char *one_cmd = NULL;
     char *separator = ";";
     bool too_much_sep = false;
+    bool not_fst = false;
 
     while (line[i]) {
         one_cmd = return_one_cmd(line, &i);
         if (is_pipe(line[i], line[i + 1], line[i - 1]) &&
-            (!one_cmd || one_cmd[0] == '\0')) too_much_sep = true;
+            (!one_cmd || one_cmd[0] == '\0') && not_fst == false)
+            too_much_sep = true;
         if (one_cmd[0] != '\0') {
+            not_fst = true;
             new_cmd = add_to_list(one_cmd, separator, new_cmd);
             separator = which_sep(line[i], line[i + 1], line[i - 1]);
         } if (one_cmd) free(one_cmd);
         i++;
-    } if (!new_cmd && too_much_sep == true)
-        return add_to_list(NULL, "||", new_cmd);
-    if ((strcmp(separator, ";") != 0 || too_much_sep == true) && new_cmd)
-        new_cmd->more_sep = true;
-    my_rev_list(&new_cmd);
-    return new_cmd;
+    }
+    return final_check(new_cmd, separator, too_much_sep);
 }
