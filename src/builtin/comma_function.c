@@ -9,8 +9,8 @@
 
 int call_exec_comma_function(char **envp, char *line, shell_t *shell, int x)
 {
-    shell->cmd = line;
-    shell->array = my_str_to_world_array_pipe(shell->cmd);
+    shell->cmd = clean_str(line);
+    shell->array = str_to_wordtab(shell->cmd, " ");
 
     if (shell->array[0]) {
         x = call_rafters(line, envp, shell, x);

@@ -60,12 +60,34 @@ int loop_pipe(piping_t *piping, shell_t *shell, char **envp)
     return 0;
 }
 
+int check_pipe_erro(char *line, int i)
+{
+    if (line[i] == '|') {
+        if (!(line[i - 1])) {
+            printf("Invalid null command\n");
+            return 1;
+        }
+        if (!(line[i + 1])) {
+            printf("Invalid null command\n");
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int exec_first_arg(char **envp, char *line, shell_t *shell, int x)
 {
+    char *test = my_strdup(clean_str(line));
     char **array = str_to_wordtab(line, "|");
     piping_t *piping = NULL;
+    int i = 0;
 
     array = clean_string(array);
+    while (test[i]) {
+        if (check_pipe_erro(test, i) == 1)
+            return 1;
+        i++;
+    }
     piping = get_path(array);
     set_fd(piping);
     loop_pipe(piping, shell, envp);

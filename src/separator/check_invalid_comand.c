@@ -7,15 +7,6 @@
 
 #include "my.h"
 
-int check_pipes(char *cmd)
-{
-    char *temp = clean_str(cmd);
-
-    if (!strcmp(temp, "|") || !strcmp(temp, " |") || !strcmp(temp, "| "))
-        return 1;
-    return 0;
-}
-
 int check_invalid_command(cmd_t *cmd)
 {
     cmd_t *tmp;
@@ -24,7 +15,7 @@ int check_invalid_command(cmd_t *cmd)
         return 2;
     tmp = cmd;
     while (tmp) {
-        if (tmp->more_sep == true || !tmp->cmd || check_pipes(tmp->cmd)) {
+        if (tmp->more_sep == true || !tmp->cmd) {
             my_putstr("Invalid null command.\n");
             return 2;
         }

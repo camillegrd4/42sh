@@ -24,7 +24,6 @@ typedef struct shell {
     char *echo_path;
     int value;
     int without;
-    int error;
     int command_done;
     char *username;
     char *host;

@@ -11,7 +11,7 @@ int pipe_loop_ext(piping_t *piping, shell_t *shell, char **envp, pid_t pid)
 {
     dup2(piping->fd[0], 0);
     dup2(piping->fd[1], 1);
-    if (exec_function(envp, shell, pid) == 84)
+    if (my_function(shell, envp) == 84)
         return 84;
     exit(EXIT_FAILURE);
     return 0;

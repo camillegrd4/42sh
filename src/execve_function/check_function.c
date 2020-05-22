@@ -39,7 +39,7 @@ int check_error_father(int wstatus)
         return 1;
     }
     if (WIFEXITED(wstatus)) {
-        if (WEXITSTATUS(wstatus) == 1)
+        if (WEXITSTATUS(wstatus) != 0)
             return 1;
         else
             return 0;

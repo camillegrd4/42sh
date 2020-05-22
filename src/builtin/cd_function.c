@@ -75,7 +75,6 @@ int cd_function_next(char **envp, shell_t *shell, int value, char *save)
         return 1;
     if (my_strncmp(shell->array[1], "-", 1) == 0) {
         if (cd_normal(shell, "-", value, save) == 1) {
-            shell->error = 1;
             return 1;
         }
     }
