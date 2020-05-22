@@ -56,13 +56,11 @@ int double_rev_rafter(char **envp, char *line, shell_t *shell, int x)
     pid_t pid;
     int fd[2];
 
+    if (check_line_double_rev_rafters(line) == 1)
+        return 1;
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, "<");
     shell->path_bis = clean_string(shell->path_bis);
-    if (my_strcmp(shell->path_bis[0], "<<") == 0) {
-        my_putstr("Invalid null command.\n");
-        return 84;
-    }
     if ((pid = fork()) < 0) {
         my_putstr("Error fork\n");
         return 1;

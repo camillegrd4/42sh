@@ -115,6 +115,7 @@ int flags_e_maj(shell_t *shell);
 int backslash_v_f(shell_t *shell);
 int check_separ(char *line, int i, int *value);
 int is_end(char c);
+char *get_env_line(char *line, char **env);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);
@@ -152,6 +153,13 @@ void free_list(cmd_t *);
 int my_strcmp_char(char const *s1, char const s2);
 char *clean_str(char *);
 int check_sep_function(list_t list, char *line, shell_t *shell, int i);
+int my_strncmp_to_get_line(char *s1, char *s2, int n);
+builtin_t find_recode_function(char *key, shell_t *shell);
+int check_line_double_rev_rafters(char *line);
+int check_line_double_rafters(char *line);
+int missing_command(int number_arg, int number_rafters);
+int check_line_simple_rafters(char *line);
+int check_line_simple_rev_rafters(char *line);
 
 /*separator*/
 cmd_t *parse_cmd(char *line);
@@ -168,6 +176,7 @@ int is_or(char **envp, char *line, shell_t *shell, int x);
 int check_time(char **env, char, char, shell_t *shell, int x);
 int is_not_separator(char current, char plus_one, char minus_one);
 int is_pipe(char, char, char);
+char *which_sep(char current, char plus_one, char minus_one);
 int check_invalid_command(cmd_t *);
 int pipe_loop_ext(piping_t *piping, shell_t *shell, char **envp, pid_t pid);
 int set_fd(piping_t *piping);

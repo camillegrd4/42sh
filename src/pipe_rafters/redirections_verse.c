@@ -41,6 +41,8 @@ int reverse_function(char **envp, char *line, shell_t *shell, int x)
     int i = 0;
     int fd[2];
 
+    if (check_line_simple_rev_rafters(line) == 1)
+        return 1;
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, "<");
     shell->path_bis = clean_string(shell->path_bis);

@@ -45,37 +45,36 @@ int cd_normal(shell_t *shell, char *path, int value, char *save)
     return 0;
 }
 
-int cd_home(shell_t *shell)
+int cd_home(shell_t *shell, char **envp)
 {
+    shell->array[0] = my_strdup(get_env_line("HOME=", envp) + 5);
     if (!shell->array[1]) {
         errno = 0;
-        if (chdir("/home") == -1) {
+        if (chdir(shell->array[0]) == -1) {
             if (errno == EACCES) {
                 my_putstr("error: Permission denied.\n");
                 return 1;
             }
             if (errno == ENOENT) {
-                my_putstr("/home");
+                my_putstr(shell->array[0]);
                 my_putstr(": No such file or directory.\n");
                 return 1;
             }
             if (errno == ENOTDIR) {
-                my_putstr("/home");
+                my_putstr(shell->array[0]);
                 my_putstr(": Not a directory.\n");
                 return 1;
             }
         }
-    }
-    return 0;
+    } return 0;
 }
 
 int cd_function_next(char **envp, shell_t *shell, int value, char *save)
 {
-    if (cd_home(shell) == 1)
+    if (cd_home(shell, envp) == 1)
         return 1;
     if (my_strncmp(shell->array[1], "-", 1) == 0) {
         if (cd_normal(shell, "-", value, save) == 1) {
-            shell->error = 1;
             return 1;
         }
     }

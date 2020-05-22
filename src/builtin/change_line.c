@@ -68,7 +68,6 @@ int change_env(char **envp, shell_t *shell)
     if (!shell->array[2])
         shell->array[2] = " ";
     if (check_arg(shell->array[1], shell) == 1) {
-        shell->error = 1;
         return 1;
     }
     shell->line = 0;

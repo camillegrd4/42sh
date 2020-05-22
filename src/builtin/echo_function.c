@@ -38,19 +38,25 @@ int my_main_flags(char str)
 
 int print_one_flag(shell_t *shell, int i)
 {
-    int x = 0;
     int j = 0;
+    int x = 0;
 
-    if ((x = check_cot(shell->echo_path, j)) != 2) {
+    if ((i = check_cot(shell->echo_path, j)) == 2) {
         print_arg(shell);
-        return 2;
-    } else if (shell->echo_path[i] == '\\'
-        && my_main_flags(shell->echo_path[i + 1]) == 1) {
-        my_pattern(shell, shell->echo_path[i + 1]);
-        print_n_flags_backslash_n(shell, i);
-        printf("\n");
-        return 2;
+        return i;
     }
+    if (i == 1) return 1;
+    j = 0;
+    while (shell->echo_path[x]) {
+        if (check_cot(shell->echo_path, j) == 2) {
+            if (shell->echo_path[x] == '\\'
+            && my_main_flags(shell->echo_path[x + 1]) == 1) {
+                return 2;
+            }
+        }
+        x++;
+    }
+    print_arg(shell);
     return 0;
 }
 
@@ -69,9 +75,6 @@ int call_flags_echo(shell_t *shell, int i)
     if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'E') {
         flags_e_maj(shell);
         return 2;
-    } else {
-        if (print_one_flag(shell, i) == 2)
-            return 2;
     }
     return 0;
 }
@@ -80,6 +83,7 @@ int echo_builtin(char **envp, shell_t *shell)
 {
     int i = 0;
     char letter;
+    int j = 0;
     shell->echo_path = recover_arg(shell->array);
 
     if (shell->echo_path) {
@@ -89,6 +93,7 @@ int echo_builtin(char **envp, shell_t *shell)
             i++;
         }
     }
-    print_arg(shell);
+    if (print_one_flag(shell, i) == 2)
+        return 2;
     return 0;
 }

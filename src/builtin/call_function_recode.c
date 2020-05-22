@@ -17,7 +17,7 @@ const recode_t tab[] = {
     { "NULL" },
 };
 
-builtin_t find(char *key, shell_t *shell)
+builtin_t find_recode_function(char *key, shell_t *shell)
 {
     int i = 0;
 
@@ -34,7 +34,7 @@ builtin_t find(char *key, shell_t *shell)
 
 int call_builtin(char **envp, shell_t *shell)
 {
-    builtin_t builtin = find(shell->array[0], shell);
+    builtin_t builtin = find_recode_function(shell->array[0], shell);
 
     if (!(builtin))
         return 0;

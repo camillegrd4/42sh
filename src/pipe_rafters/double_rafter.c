@@ -31,6 +31,8 @@ int double_rafter(char **envp, char *line, shell_t *shell, int x)
     pid_t pid;
     int i = 0;
 
+    if (check_line_double_rafters(line) == 1)
+        return 1;
     shell->cmd = line;
     shell->path_bis = str_to_wordtab(line, ">");
     shell->path_bis = clean_string(shell->path_bis);
