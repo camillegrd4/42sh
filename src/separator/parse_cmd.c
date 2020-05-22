@@ -87,7 +87,8 @@ cmd_t *parse_cmd(char *line)
             not_fst = true;
             new_cmd = add_to_list(one_cmd, separator, new_cmd);
             separator = which_sep(line[i], line[i + 1], line[i - 1]);
-        } if (one_cmd) free(one_cmd);
+        }
+        if (one_cmd) free(one_cmd);
         i++;
     }
     return final_check(new_cmd, separator, too_much_sep);
