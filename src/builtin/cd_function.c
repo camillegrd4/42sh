@@ -71,8 +71,6 @@ int cd_home(shell_t *shell)
 
 int cd_function_next(char **envp, shell_t *shell, int value, char *save)
 {
-    if (!envp || !shell || !save)
-        return 84;
     if (cd_home(shell) == 1)
         return 1;
     if (my_strncmp(shell->array[1], "-", 1) == 0) {
