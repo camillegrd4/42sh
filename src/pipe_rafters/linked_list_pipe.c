@@ -31,6 +31,8 @@ piping_t *add_element(piping_t *head, char *str)
     if (!tmp)
         return NULL;
     tmp->tab = str_to_wordtab(str, " ");
+    tmp->fd[0] = 0;
+    tmp->fd[1] = 1;
     tmp->next = head;
     return tmp;
 }

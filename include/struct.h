@@ -63,6 +63,7 @@ typedef struct separ {
 
 typedef struct piping_s {
     char **tab;
+    int fd[2];
     struct piping_s *next;
 } piping_t;
 

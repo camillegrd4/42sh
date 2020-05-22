@@ -35,6 +35,7 @@ PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/redirections_verse.c 	\
 					src/pipe_rafters/linked_list_pipe.c		\
 					src/pipe_rafters/check_separator.c		\
+					src/pipe_rafters/fd.c					\
 					src/pipe_rafters/call_rafters.c 		\
 
 EXECVE_FUNCTION =	src/execve_function/exec_binary.c 		\

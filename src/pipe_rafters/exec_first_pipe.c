@@ -39,47 +39,35 @@ void freetab(char **tab)
         free(tab[i++]);
 }
 
-void pipe_loop_ext(int fd_in, int *p, piping_t *piping, shell_t *shell)
-{
-    dup2(fd_in, 0);
-    if (piping->next != NULL)
-        dup2(p[1], 1);
-    close(p[0]);
-    shell->array = tabdup(piping->tab);
-}
-
 int loop_pipe(piping_t *piping, shell_t *shell, char **envp)
 {
-    int   p[2];
     pid_t pid;
-    int   fd_in = 0;
+    int status = 0;
 
-    while (piping) {
-        pipe(p);
-        if ((pid = fork()) == -1)
-            exit(EXIT_FAILURE);
-        else if (pid == 0) {
-            pipe_loop_ext(fd_in, p, piping, shell);
-            if (exec_function(envp, shell, pid) == 84)
-                return 84;
-            exit(EXIT_FAILURE);
-        } else {
-            wait(NULL);
-            close(p[1]);
-            fd_in = p[0];
-            piping = piping->next;
-        }
-    }
+    shell->array = tabdup(piping->tab);
+    if ((pid = fork()) == -1)
+        exit(EXIT_FAILURE);
+    else if (pid == 0)
+        return (pipe_loop_ext(piping, shell, envp, pid));
+    if (isatty(piping->fd[1]) == 0)
+        close(piping->fd[1]);
+    if (isatty(piping->fd[0]) == 0)
+        close(piping->fd[0]);
+    piping = piping->next;
+    if (piping != NULL)
+        loop_pipe(piping, shell, envp);
+    waitpid(pid, &status, 0);
     return 0;
 }
 
 int exec_first_arg(char **envp, char *line, shell_t *shell, int x)
 {
     char **array = str_to_wordtab(line, "|");
+    piping_t *piping = NULL;
 
     array = clean_string(array);
-    piping_t *piping = get_path(array);
-
+    piping = get_path(array);
+    set_fd(piping);
     loop_pipe(piping, shell, envp);
     freetab(array);
     return 2;
