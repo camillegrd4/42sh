@@ -14,12 +14,10 @@ int my_function(shell_t *shell, char **envp)
 
     if (!envp || !shell)
         return 84;
-    if ((x = call_builtin(envp, shell)) == 1)
-        return 1;
-    if (x == 2)
-        return 2;
-    else if (exec_function(envp, shell, pid) == 84) {
-        return 84;
+    if ((x = call_builtin(envp, shell)) != 0)
+        return x;
+    else if ((x = exec_function(envp, shell, pid)) != 0) {
+        return x;
     }
     return 0;
 }

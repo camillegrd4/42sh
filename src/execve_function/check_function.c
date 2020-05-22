@@ -38,5 +38,11 @@ int check_error_father(int wstatus)
         my_putchar('\n');
         return 1;
     }
+    if (WIFEXITED(wstatus)) {
+        if (WEXITSTATUS(wstatus) == 1)
+            return 1;
+        else
+            return 0;
+    }
     return 0;
 }

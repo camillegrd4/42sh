@@ -27,8 +27,8 @@ int print_arg(shell_t *shell)
     int j = 0;
 
     while (shell->array[i]) {
-        while (shell->array[i][j] != '\0') {
-            if (shell->array[i][j] == '"' || shell->array[i][j] == '\\') {
+        while (shell->array[i][j] != '\0' && shell->array[i][j] != '\n') {
+            if (shell->array[i][j] != '"' && shell->array[i][j] != '\\') {
                 my_putchar(shell->array[i][j]);
             }
             j++;
@@ -36,6 +36,7 @@ int print_arg(shell_t *shell)
         i++;
         j = 0;
     }
+    my_putchar('\n');
     return 0;
 }
 

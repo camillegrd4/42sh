@@ -36,8 +36,28 @@ int my_main_flags(char str)
     return 0;
 }
 
+int print_one_flag(shell_t *shell, int i)
+{
+    int x = 0;
+    int j = 0;
+
+    if ((x = check_cot(shell->echo_path, j)) != 2) {
+        print_arg(shell);
+        return 2;
+    } else if (shell->echo_path[i] == '\\'
+        && my_main_flags(shell->echo_path[i + 1]) == 1) {
+        my_pattern(shell, shell->echo_path[i + 1]);
+        print_n_flags_backslash_n(shell, i);
+        printf("\n");
+        return 2;
+    }
+    return 0;
+}
+
 int call_flags_echo(shell_t *shell, int i)
 {
+    int j = 0;
+
     if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'n') {
         flags_n(shell);
         return 2;
@@ -49,6 +69,9 @@ int call_flags_echo(shell_t *shell, int i)
     if (shell->echo_path[i] == '-' && shell->echo_path[i + 1] == 'E') {
         flags_e_maj(shell);
         return 2;
+    } else {
+        if (print_one_flag(shell, i) == 2)
+            return 2;
     }
     return 0;
 }

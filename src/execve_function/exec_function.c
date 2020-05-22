@@ -9,10 +9,9 @@
 
 int command_not_found(char **envp, shell_t *shell)
 {
-    shell->error++;
     my_putstr_without_return(shell->array[0]);
     my_putstr(": Command not found.\n");
-    exit(0);
+    exit(1);
 }
 
 int access_function(int i, char **envp, char *path, shell_t *shell)
@@ -69,8 +68,8 @@ int exec_function_next(char **envp, shell_t *shell, pid_t pid)
     if (pid == -1)
         return 84;
     if (pid == 0) {
-        if (execve_function(envp, shell) == 84)
-            return 84;
+        if (execve_function(envp, shell) == 1)
+            exit(1);
     } else {
         pid = waitpid(pid, &wstatus, 0);
         if (check_error_father(wstatus) == 1)
