@@ -8,13 +8,29 @@
 #include "my.h"
 #include <limits.h>
 
-void prompt_user(shell_t *shell)
+char *get_current_folder(void)
 {
     char cwd[PATH_MAX];
-
     getcwd(cwd, sizeof(cwd));
-    if (shell->username && isatty(STDIN_FILENO) && shell->host && cwd)
-        printf("%s@%s || %s $> ", shell->username, shell->host, cwd);
-    else
+    int i = 0;
+    char **array = str_to_wordtab(cwd, "/");
+
+    while (array[i] && i < 15)
+        i++;
+    if (i > 15)
+        return NULL;
+    else {
+        return array[i - 1];
+    }
+}
+
+void prompt_user(shell_t *shell)
+{
+
+    char *folder = get_current_folder();
+
+    if (folder)
+        printf("%s $>", folder);
+    else 
         my_putstr("$>");
 }
