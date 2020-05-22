@@ -115,6 +115,7 @@ int flags_e_maj(shell_t *shell);
 int backslash_v_f(shell_t *shell);
 int check_separ(char *line, int i, int *value);
 int is_end(char c);
+char *get_env_line(char *line, char **env);
 
 /*lib*/
 char **add_letter_colon(char **array, int number, char *str, int i);

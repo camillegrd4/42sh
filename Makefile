@@ -25,6 +25,7 @@ BUILTIN =			src/builtin/call_function_recode.c 		\
 					src/builtin/change_string.c	 			\
 					src/builtin/flag_e_maj.c 				\
 					src/builtin/calc_len.c 					\
+					src/builtin/get_env_line.c 				\
 
 PIPE_RAFTERS =		src/pipe_rafters/comma_or_pipe.c 		\
 					src/pipe_rafters/exec_first_pipe.c 		\
