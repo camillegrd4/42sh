@@ -41,10 +41,6 @@ int check_arg_double_rev_rafters(char **check)
         if (i == 0 && my_strncmp(check[i], "<<", 2) == 0 && check[i + 1]) {
             printf("Invalid null command.\n");
             return 1;
-        } else if (i == 0 && my_strncmp(check[i], "cat", 3) == 0) {
-            printf("%s", check[arg]);
-            printf(": Command not found.\n");
-            return 1;
         }
         i++;
     }
